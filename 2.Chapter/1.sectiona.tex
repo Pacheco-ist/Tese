@@ -5,10 +5,63 @@ Bluetooth is a wireless technology that was created in 1994 with the objective o
 
 The \ac{BLE} protocol was introduced with the Bluetooth Core Specification version 4 (also called Bluetooth Smart) circa 2010 alongside two other protocols.  Out of the three, \ac{BLE} standed out for its lower power consuption, lower complexity and lower cost, while allowing for  device discovery, connection establishment and connection mechanisms. Due to its characteristics, the \ac{BLE} protocol was utilized in various \ac{IoT} applications.  
 
-\subsection{Subsection A}
-\label{subsec:subasectionA}
+\subsection{\ac{BLE}'s Architecture}
+\label{subsec:BLEArchitecture}
 
-This would be a citation \cite{dummy}.
+Bluetooth's Architecture is everchanging and can become very complex rather quickly with the introduction of different types of protocols.
+ When working with \ac{BLE} it's important to understand the key components of its architecture  because by doing it's possible to better analyze the role of each component and how they operate and depend on each other. There are two main groups of core blocks, the \ac{LE} Controller and the \ac{LE} Host, in \ref{subsec:LEController} and \ref{subsec:LEHost} respectively, and most the most relevant of these components will now be looked at.
+ 
+ 
+\subsubsection{ \ac{LE} Controller Group}
+\label{subsec:LEController}
+
+\textbf{\ac{PHY} Layer -} Architectural block responsible for all Bluetooths' communication channels on the 2,4GHz radio. Receiving and transmitting packets and supplying information crucial for controlling its timing and frequency through the baseband block.
+
+
+\textbf{Link Layer -} Architectural block responsible for managing logical links between \ac{BLE} devices. It can create and release connections, update connection parameters related to \ac{PHY} links. It's responsible for the discovery and consequently connection procedure and also sending and receiving data.
+
+
+\textbf{Device Manager -} Architectural block responsible for controlling the general behaviour of the Bluetooth device. This block is responsible for all operations that aren't directly related to data transportation. Some of its operations are: inquiring for the presence of nearby  \ac{BLE} devices; connecting to a \ac{BLE} device; setting whether or not its local device is discoverable and/or connectable by the others; controlling device behaviour such as managing own's local name or stored keys. 
+
+
+\textbf{Baseband Resource Manager -} Architectural block responsible for all acess to the radio medium, this means acess to the \ac{PHY} channels. It has two porpuses, first to negotiate contracts with the entities that wish to use the medium and second to act as a scheduler on the same radio medium, granting the entities with said contracts, a time window in which they can utilize the medium. A contract is basically a commitment to deliver a certain \ac{QoS} on the user application.
+
+
+\textbf{Link Controller -} Architectural block responsible for the encoding and decoding of Bluetooth packets from the data payload and parameters related to the physical channel, logical transport and logical link. It also carries out the Link Layer protocol in conjunction with Baseband manager's scheduling function to communicate flow control and acknowledgement and retransmission request signals.
+
+
+
+\subsubsection{ \ac{LE} Host Group}
+\label{subsec:LEHost}
+
+\textbf{\ac{L2CAP} -} Architectural block responsible of transmits packets to the \ac{HCI} or directly to the Link Layer in hostless systems. It allows for higher-level protocol multiplexing, packet segmentation and reassembly, and the conveying of \ac{QoS} information to higher layers.
+
+ 
+\textbf{Channel Manager -} Architectural block responsible for creating, managing and closing \ac{L2CAP} channels used in transport of service protocols and application data streams. The local Channel Manager makes use of the \ac{L2CAP} protocol to communicate with a peer's Channel Manager and together create \ac{L2CAP} channels and connect their endpoints to the appropriate entities.
+
+
+\textbf{\ac{SMP} -} Architectural block responsible for implementing the \ac{P2P} protocol that operates over its own dedicated \ac{L2CAP} channel and generates encryption keys and identity keys. This block is also in charge of storing those same keys and making them available to the controller. These keys are later used in the encryption or pairing procedures.
+
+
+\textbf{\ac{ATT} Protocol -} Architectural block responsible for implementing the \ac{P2P} protocol between an attribute server and client. This client/server communication happens in a dedicated fixed \ac{L2CAP} channel. A server can send through this channel responses, notifications and indications, while the client can send requests, commands and confirmations. This block allows the clients to read and write values of attributes on a peer device acting as a \ac{ATT} server.
+
+
+\textbf{\ac{GATT} Profile -} Architectural block responsible for creating a framework for the \ac{ATT}, in which it is represented the funcionalities of an \ac{ATT} server. This profile describes the hierarchy of services, characteristics and attributes existent in the server and provides an interface for discovering, reading, writing and indicating of service characteristics and profiles. A more thorough description of profiles can be found in \ref{BLEProfile}.
+
+
+\textbf{\ac{GAP} -} Architectural block responsible for working in conjunction with \ac{GATT} to define the base funcionality of \ac{BLE} devices. The available services in this profile are: \ac{BLE} device discovery, connection modes, security, authentication, association models and service discovery.
+\ac{GAP} defines four different roles to describe a device, allowing for the controllers to be optimized in funtion of the device's desired roles.
+\tab \textbf{Broadcaster:} This role is optimized for transmitter-only applications. In a scenario in which a device supports this role it will make use of advertising in order to broadcast its data. The broadcaster role doesn't support for connections.
+ 
+ 
+\tab \textbf{Observer:} This role is optimized for receiver-only applications and it's complementary to the broadcaster role. It only receives broadcast data included in advertising packets and much like its counterpart, it doesn't support connections.
+ 
+
+\tab \textbf{Peripheral:} This role is optimized for devices that only want to suppot a single connection, allowing for a much less complex controller due to the fact that it only needs to support the slave role and not the master one.
+
+
+\tab \textbf{Central:} This role supports multiple connections and funtions as the initiator for all of them. These connection are all made with Peripheral devices and its controller must support the master role in a connection and allow for more complex funtions, in comparison to the remaining roles.
+
 
 \ac{acro} 
 % The first time you use this, the acronym will be written in full with the acronym in parentheses: supernova (SN). At later times it will just print the acronym: SN.
@@ -27,8 +80,42 @@ This would be a citation \cite{dummy}.
 
 As seen in \cite{wiki}. \emph{Enfatizar}
 
-\subsection{Subsection B}
-\label{subsec:subbsectiona}
+
+\subsection{\ac{BLE} Profiles}
+\label{subsec:BLEProfile}
+
+Generic Attribute Profile (GATT) is built on top of the Attribute Protocol (ATT)
+and establishes common operations and a framework for the data transported
+and stored by the Attribute Protocol. GATT defines two roles: Server and
+Client. The GATT roles are not necessarily tied to specific GAP roles and but
+may be specified by higher layer profiles. GATT and ATT are not transport
+specific and can be used in both BR/EDR and LE. However, GATT and ATT
+are mandatory to implement in LE since it is used for discovering services
+The GATT server stores the data transported over the Attribute Protocol and
+accepts Attribute Protocol requests, commands and confirmations from the
+GATT client. The GATT server sends responses to requests and when
+configured, sends indication and notifications asynchronously to the GATT
+client when specified events occur on the GATT server.
+
+
+
+GATT also specifies the format of data contained on the GATT server.
+Attributes, as transported by the Attribute Protocol, are formatted as Services
+and Characteristics. Services may contain a collection of characteristics.
+
+Characteristics contain a single value and any number of descriptors
+describing the characteristic value.
+With the defined structure of services, characteristics and characteristic
+descriptors a GATT client that is not specific to a profile can still traverse the
+GATT server and display characteristic values to the user. The characteristic
+descriptors can be used to display descriptions of the characteristic values that
+may make the value understandable by the user.
+
+\subsubsection{Services}
+\label{subsec:services}
+
+\subsubsection{Characteristics}
+\label{subsec:Charac}
 
 \begin{figure}[H]
 	\centering
