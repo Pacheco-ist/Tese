@@ -1,4 +1,21 @@
 \section{Motivation}
 \label{sec:int_motivation}
 
-Motivation Section.
+The success of \ac{GPS} as an outdoor location system and its difficulties to have the same success in the indoor location system's environment sparkled the research for different technologies capable of fillinf the hole. As such in the last fifteen years many indoor system's have been created which attempted to solve the problem using one or more technologies, each with their strengths and weaknesses. 
+
+With the advencement of smartphones they are now capable of providing many more tools that can be useful for indoor location such as GPS, Wi-Fi, GSM, camera, FM radio, Bluetooth and microphone. Beside these tools, nowadays they even have inertial sensors such as accelerometers, gyroscopes or digital compasses which ,together with ones that were previously mentioned, provide a wide variaty of possibilities. Since this field is still in development and there is a big amount of different scenarios in which it has to be applied that consequently brings onto the table different objectives and requirements, every existant solution can be useful for a certain amount of cases due to the nature of each of them. As such there is a huge quantity of existant solutions that have been researched for each technology which then can even branch out according to all the possible optimizations that have to be applied in order to achieved the project's requirements.
+
+This occurence has led to a need to registrate the state of the indoor location which has been fulfilled by all the existing surveys on the existant technologies \cite{survey1, surveythesis}, which gather up all the existant technologies in the field and analyze them according to their cost, precision, energy efficiency, scalability, privacy, among others criteria. Other surveys analyze technologies on a more specific level by foculizing on existant projects to compare their performances \cite{surveywireless}. Another relevant aspect that has been surveid is the existant techniques utilized \cite{reviewtechniques, survey2} by analyzing the different metrics utilized to calculate a user's position and comparing their strengths and weaknesses according to coverage, line-of-sight and multipath problems and cost.  
+
+This work saw in this situation an opportunity to create a generic architecture that would be capable of deploying any of the existant systems. With all the existant work related to improving a certain technology's performance there was an higher interest in on the possibility of integrating multiple existant works than further improving a single case.
+
+
+
+In order to implement the created architecture I used bluetooth low energy since it's a recent technology that is trying to improve its core in order to be usable on \ac{IoT} and it was capable of providing room-based accuracy without much effort on the algorithm department. The final implemented solution can be visualised on figure \ref{fig:solution}, which has the \ac{BLE} tags, the smartphone application, the python location server and utlizes the google maps as map provider.
+
+ \begin{figure}[H]
+	\centering
+		\includegraphics[width=0.5\linewidth]{2.Chapter/System.png}
+	\caption[Implemented system]{Implemented system}
+	\label{fig:solution}
+\end{figure}

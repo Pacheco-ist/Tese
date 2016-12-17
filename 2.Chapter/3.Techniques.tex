@@ -1,0 +1,58 @@
+\section{Position Techniques}
+\label{sec:techniques}
+
+There are many ways of obtaining the location of an object or person...
+
+
+\subsection{Proximity Detection}
+\label{subsec:prox}
+
+Proximity detection is one of the simplest position techniques to implement since its objective isn't to provide a precise position of the target but a symbolic relative location information. The target's position is obtained through the \ac{CoO} method which relies on a grid of antennas/beacon with a well-known position. When applying this method, if only one beacon is detected by the mobile target then the position provided is equal to the position of the beacon. If more than one beacons are detected by the target, it considers that its position is equal to the position of beacon with the strongest associated signal. In this project, since the objective wasn't to be capable of providing a bluetooth low energy with the best accuracy possible but to prove that the presented architecture was appliable to this type, the \ac{CoO} method was the chosen one. As such in order to apply room-based accuracy the minimum requirement would be to place a beacon in each existant room. This method can be applied with a better accuracy in mind and doing so depends only on the deployed beacon density. This technique is often implemented in system running \ac{IR} , \ac{RFID} and Bluetooth.
+
+\subsection{Triangulation}
+\label{subsec:tri}
+
+The Triangulation techniques makes use of the geometric properties of triangles to determine the location of a mobile target. It can be of two types: lateration, which estimates a target's position by measuring its distance to multiple reference points, and angulation, which obtains the target's position by computing angles relative to multiple reference points. Lateration makes use of \ac{ToA}, \ac{TDoA}, \ac{RToF} and \ac{RSSI}, while angulation utilizes the \ac{AoA} technique. All the previously mentioned techniques are individually analysed in sections \ref{subsec:toa}, \ref{subsec:tdoa}, \ref{subsec:rtof}, \ref{subsec:rssi} and \ref{subsec:aoa}. 
+
+\subsubsection{Time of Arrival (ToA) }
+\label{subsubsec:toa}
+
+\ac{ToA}-based systems rely on accurate clock synchronization and signal message sent from a mobile target to several receiving beacons. The distance that is to be used in the calculation of the target's position is proportional to the propagation time. As such the message sent from the mobile target is timestamped with its departure time allowing for the receiving beacons to obtained their distance to the target through the transmission time and the associated signal propagation speed.
+One of the consequences of requiring precise knowledge of transmission start times is that every single device, beacon and mobile target, need to be accurately synchronized with a precise time source which causes this technique to be the most accurate one in indoor environments since it's capable of filtering multi-path effects. On the others hand the disadvantages of using this technique is the synchronization requirements and the additional information that needs to be contained in the sent messages, i.e. timestamps. 
+
+
+\subsubsection{Time Difference of Arrival (TDoA) }
+\label{subsubsec:tdoa}
+
+\ac{TDoA} systems attempt to determine the relative position of a mobile target by examining the differences in time at which the signal arrives at multiple beacons. This technique doesn't require clock synchronization with the sender as there is no need for timestampts to obtain its location, making this requirement only present on the receivers. The location is obtain from a transmission with unknown starting time that is received in multiple synchronized receivers which produces multiple \ac{TDoA} measurmentes. Each difference in arrival times produces a \ac{TDoA} and consequently a hyperbolic curve on which the target is located. Each intersection of multiple hyperbolic curves represents a possible location of the target, requiring two or more measurments in order to obtain the location on a two dimensional plane.
+
+
+\subsubsection{Roundtrip Time of Flight (RToF)}
+\label{subsubsec:rtfo}
+
+This technique obtains distances by measuring the time-of-flight of the signal pulse traveling from the transmitter to the receiver ( measuring unit) and back. This solution solves some of the synchronization issues presented by \ac{ToA} since only the only one of the two nodes records the transmition and arrival times, with the convertion from time to distance being equal to the one applied with \ac{ToA}. The mechanism of obtaining a time reading is similar to that of a radar, i.e. a signal is sent to which the receiving node replies back to the transmiter. When the response signal is received the roundtrip time is obtained. One issue presented by using this technique is the incapability of knowing the time delay on the receiver between receiving the first signal and sending the response. This unknown delay can be ignore in medium to long-ranged systems if its value is relatively small when compared to the transmission time. In short-ranged system this situation can't be applied and as such this technique isn't suited to be applied.
+
+
+\subsubsection{ \ac{RSSI}}
+\label{subsubsec:rssi}
+
+Received Signal Strengh Information (RSSI) is a non-linear signal strength indicator based on signal attenuation that is only usable with radio signals. The convertion of this value to distance is often achieved through estimates of signal path loss due to propagation, altough this approach doesn't hold is scenarios where severe multipath effects and shadowing are present.
+
+
+
+A technique that is often used with \ac{RSSI} is the fingerprint method which is the proccess of computing the location of a user by matching its location-dependent signal characteristics to an existing fingerprint database. This method doesn't required any additional hardware on the mobile device or the beacons as well as no time synchronization. This process is divided in two stages: an offline and an online phase. In the offline stage, also called calibration phase, the maps for the fingerprint are set up either empirically in measurement operations or computed analytically through a signal propagation model. For the first option multiple postions are defined on the map. On each of this positions a mobile user captures the signal strengths received from each of the existant beacons. With the fingerprint concluded, begins the online phase, where mobile users are already capable of being tracked. In order to obtain a user's position it must measure the existant signal properties, which are then compared with the fingerprint databse so that a as close as possible match can be found. Position matching is can be achieved through pattern recognition techniques such as K-nearest-neighbours (KNN), support vector machines (SVM), among others.
+This approach has the drawbacks of being labour intensive and time consuming on the offline phase and the difficulty to maintain and update the fingerprint database in order for it to be in accordance to the current environment. The second drawback is caused by \ac{RSSI}'s sensability to changes in the environment such as dynamic factors (people and doors), diffraction and reflection. 
+
+
+\subsubsection{Angle of Arrival (AoA) }
+\label{subsubsec:aoa}
+
+The \ac{AoA} technique finds the location of the target by intersecting several pairs of angle direction lines. Each of this line is part of the circular radius around a beacon which leads to the mobile target. This technique requires only two beacons for two dimensional and three for three dimensional position estimation, with any extra beacon leading to an increase in accuracy while not requiring any time synchronization.
+This techniques drawbacks is the increased implementation cost due to the antennas being required to be able to measure angles and its rapid accuracy degradation as the target moves farther away from the existing beacons. This technique is capable of sub-meter accuracy although these types of systems are often limited by shadowing, multipath reflections arriving from missleading directions or by the directivity of the measuring aperture. 
+One example which attempted to tackle \ac{AoA}'s drawbacks was ArrayTrack \cite{arraytrack} which presented a multipath supression algorithm capable of removing reflection paths, performance improvements in low density scenarios and parallel processing allowing for faster location estimations. This system was capable of achieving a median accuracy of 23 cm while utilizing custom made access points with 16 antennas. Although successful, the hardware complexity remained an issue making this system inpractical.
+
+
+\subsection{Dead Reckoning}
+\label{subsec:dr}
+
+\ac{DR} is the process of estimating the target's current position through the last determined position incremented by known or estimated speeds over elapsed time. This technique has the advantage of providing autonomous positioning capacities. \ac{DR} biggest drawback is that the inaccuracy of the process is cumulative, as such the deviation in the position estimation grows with time. This issue can be aggravated by disruptive motion such as sidestepping, back-stepping or sharp turns which produce scaling errors leading to a bigger accurary errors. Due to \ac{DR}'s issues it's often accompanied by another technology in order to correct the inertial drift. A common practice is the usage of GPS,which it doesn't function in indoor environments and as such many different combanitions have been created in order to tackle this issue. Fischer et al. \cite{dr1} made use of Ultrasound beacons as landmarks to provide better accuracy and less heading errors. In their work they stated the existance of two types of errors: heading errors, which are relative to the direction in which the user is heading, and distance errors. The work was targeted for rescue team first responders and required the users to drop ultrasonic beacons as they advance through the building.
