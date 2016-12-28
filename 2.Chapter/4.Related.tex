@@ -16,8 +16,6 @@ In 1992 the Active Badge system \cite{badge} was presented as an infrared soluti
 	\label{fig:badge}
 \end{figure}
 
-http://www.cl.cam.ac.uk/research/dtg/attarchive/thebadge.html - image ref
-
 The decision to utilize \ac{IR} was due to how small and cheap the emitters and detectors are, being capable of operating within a 6 meter range and because \ac{IR} signals arent't capable of traveling through walls. The signal frequency has two major effects of the system, the first being its impact on the energy consuption of the tags, with such a small frequency allowing for long periods of work on a single battery and the second being its impact on user detection. For the used signal duration and frequency there is a chance of 1/150 for two signals to collide, which leads to a good probability that for a small number of beacons, all will be detected. One downside of such a small frequency signal is that the location of a badge can only be known, at best, to a 15 second granularity.
 
 The position of a user is obtained through the implementation of a network of sensors which act as receivers, listening to badge transmitions, and then forward the obtained information to the master station. The master station is responsible for polling all the sensors on the network, store sighted badges into a database with its associated time, position and ID, data processing and data display. The accuracy of the system is room-based by making use of \ac{CoO} and the properties of \ac{IR}. A beacon in each room would make it so that each beacon is capable of detecting any badges in its room.
@@ -134,4 +132,5 @@ Chen, L. Pei, and J. Liu. 2010. Using inquiry-based Bluetooth RSSI probability d
 positioning. Journal of Global Positioning Systems 9, 2 (2010), 122–130.
 
 http://s3.amazonaws.com/academia.edu.documents/30924074/JoGPS_v9n2p122-130.pdf?AWSAccessKeyId=AKIAJ56TQJRTWSMTNPEA&Expires=1481741330&Signature=D01oLIJ%2Bt44TBP7kOE2CnIN563I%3D&response-content-disposition=inline%3B%20filename%3DUsing_Inquiry-based_Bluetooth_RSSI_Proba.pdf
+
 
