@@ -1,14 +1,6 @@
 \section{Server}
 \label{sec:server}
 
-The webserver was implement in Python 3 programming language. The program implements a simple tcp server capable of receiving multiple request at the same time. Each request starts with information sent from an application which include a pair of MAC address and associated RSSI value for each ble device that the same application found. Afterwards the list of pairs is filtered in order to remove any existant devices that are not present in the server's database of devices.
+The webserver was implement in Python 3.5 programming language. The program implements a tcp server capable of receiving multiple request at the same time. Each request starts with information sent from an application which include an undefined amount of pairs of MAC address and associated RSSI value, each corresponding to a ble device that the same application found and connected. Afterwards the list of pairs is filtered in order to remove any existant devices that are not present in the server's database of devices. Once the list of pairs is composed only devices belonging to the server, the locating algorithm is deployed, in this case a \ac{CoO} algorithm, which assumes that the location of the device is equal to the location of the closest device. As such the highest \ac{RSSI} value is found, a new message is composed which includes the device's information on the database and consequently sent back to the user. 
 
 Each server has a database that includes only ble devices. An entry (description of a device) in this database is composed by the device's mac address, its longitude and latitude and its building, floor and room name. In addition to the database, a server when initiated can store additional location info such as the server's street, number, zipcode, city and country, allowing this information to be transmited to the client in order to offer an additional level of location description to the user. The whole location specific information can be visualised in figure ~\ref{fig:AppMenu}.
-
-Upon having filtered the initial list of pairs, the Cell of Origin (CoO) technique is applied by verifying which of the devices produced a stronger signal on the receptor. Upon obtaining the closest device an answer is sent to the application containing all of the information associated to the server and the selected device.
-
-
-- Describe the Database ( insert image example of database with a few entries?? )
-
-- Mention capability to Insert aditional info, at the moment it displays geocoding on pop up menu in figure ~\ref{fig:AppMenu}.
-

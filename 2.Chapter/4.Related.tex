@@ -23,11 +23,16 @@ The position of a user is obtained through the implementation of a network of se
 One of the issues that surfaced with this system were privacy issues. Due to the system's nature, the position of each badge is known in a centralized station, with the only available option for people who don't wish to be tracked, to disable their tag. Another privacy issue was the security of the system's data with needed improvements to control access to data \cite{badge1}.
 
 
+
+
+
+
+
 \subsec{Active Bat}
 \label{subsec:bat}
 
 
-In 2001 the Active bat system \cite{bat}was introduced, a system capable of tracking various object, each tagged by attaching small wireless transmitters called bats. The system's architecture is composed of small devices named bats, which are to be carried by the objects or people to be tracked, a network of \acf{US} receiver units and several base stations. The receiver network and a deployed bat can be seen on figure 
+In 2001 the Active bat system \cite{bat}was introduced, a system capable of tracking various object, each tagged by attaching small wireless transmitters called bats. The system's architecture is composed of small devices named bats, which are to be carried by the objects or people to be tracked, a network of \acf{US} receiver units and several base stations. The receiver network and a deployed bat can be seen on figure \ref{fig:bat};
 
 \begin{figure}[H]
 	\centering
@@ -93,7 +98,7 @@ In terms of performance, Cricket was capable of a distance measurement accuracy 
 \label{subsec:ble}
 	
 
-When looking at what's possible to achieve using the BLE technology there is the example of Apple's creation iBeacon \cite{ibeacon} which was presented in 2013 with the porpuse of implementing proximity sensing systems. The device is capable of playing on the broadcaster role and as such its objective is to send nearby compatible receivers certain information. Some examples of application are to track customers or trigger location-based actions on devices such as push notifications or checking in on social media, with pratical cases such as the usage of iBeacons by McDonalds to offer special offers to their customers in their fast-food stores. An indoor location system utilizing this technology was presented by Jingjing Yang et al \cite{ibeacon1}, where these devices were used to indicate a pacient of his whereabouts through the proximity sensing proprieties and this information was later transfered over to a server in order to give clients a variaty of different services, from pacient counting, to nearby department's information and offer indoor guidance to the nearest available bed. 
+When looking at what's possible to achieve using the BLE technology there is the example of Apple's creation iBeacon \cite{ibeacon} which was presented in 2013 with the porpuse of implementing proximity sensing systems. The device is capable of playing on the broadcaster role and as such its objective is to send nearby compatible receivers certain information. Some examples of application are to track customers or trigger location-based actions on devices such as push notifications or checking in on social media, with pratical cases such as the usage of iBeacons by McDonalds to offer special offers to their customers in their fast-food stores. An indoor location system utilizing this technology was presented by Jingjing Yang et al \cite{ibeacon1}, where these devices were used to indicate a patient of his whereabouts through the proximity sensing proprieties and this information was later transfered over to a server in order to give clients a variaty of different services, from pacient counting, to nearby department's information and offer indoor guidance to the nearest available bed. 
 
 When utilizing BLE for indoor location the usual metric used to calculate distances is the RSSI. This metric withint the context of bluetooth brings to surface several issues such as the fact that RSSI as a metric is very accurate only when the target is within a meter of the beacon, since the value decreases as the inverse of the square of the distance to the beacon . As such when developing solutions for indoor location that require system with high accuracy capable of tracking moving objects, the usage of RSSI can't be utilized without further work. Faragher et al \cite{bleacc} tackled one of the techniques used to improve BLE system's accuracy, fingerprinting, by verifying the effects caused by the device deployment density within the required location. This experiment also puts into evidence one of the downsides of the bluetooth technology being that its scalability is low, besides requiring higher density in order to increase accuracy, due to their low range any need to increase coverage leads to increased costs.
 
@@ -101,6 +106,65 @@ When utilizing BLE for indoor location the usual metric used to calculate distan
 Zonith \cite{zonith} introduced a bluetooth based location system with the objective of tracking the position of workers in dangerous environments. Any device registered in the zonith implemented network would be continuously tracked and accounted for in each of the system's functionalities such as, sounding an alarm whenever a lone worker doesn't move or responde within a time interval (Lone worker protection) or providing a quick an precise location of any worker that has requested for help. This system's installation requires planing of the best locations to place the beacons and number required of beacons in order to be able to provide enough courage and make sure the system provides the required quality.
 
 
+
+
+
+
+Roles. (existance) consequences
+Energy
+Device difusion
+
+structures:
+badge-      Badge (phone) sends signal
+			Sensors (receivers) capture signal and forward to Master Station
+			Master statio (centralized system) computes location and makes it available on the central computer
+
+The badge system's architecture is considerably diferent from the one proposed in this work as the role of the beacon(sensor receivers) and the smartphone (badge devices) are exchanged. This exchange in roles allows to reduce the energy cost on the mobile device since it isn't up to it to communicate with the server and due to the design of the system the energetic balance between scanning and performing a signal broadcast for a tenth of a second each fifteen seconds isn't of relevance. Another aspect of this architecture is the fact that the collected data is sent to the central station, the only place where it will be available, making it only capable of tracking individual users and not providing the users with their location.Since the required building maps are already in the central station there is no need a maps provider. In terms of device distribution, this system makes use of system specific devices, which are already set up and inserted into the system and are distributed to anyone or anything that is to be tracked.
+
+
+bat- 		Central station sends a signal indicating which bat to locate (message to all "area" controllers)
+			Controllers forward message through radio to nearby sensors and bats
+			Bat sends US signal upon receival of message
+			Sensors reset upon receival and wait for US signal
+			Sensors receive signal and send time of flight to central
+			central computes location and makes it available on central computer
+
+The bat system's architecture is very similar to the one deployed by the badge system, with the big difference being that its location is tracked upon request instead of being periodic. In energetic terms, it is also similar with the increased cost of having an additional operation, listening for central station's messages. Bat deployment is also manually done, with each person or object required to carry a system specific device. Each user's position is tracked and not provided to the user, while being made available through the maps provider extant within the central station.
+
+
+Radar-		Offline Phase:
+				Mobile Host broadcasts at marked points for fingerprint
+				Proposed to inverse the roles
+			Online Phase:
+				Same thing
+
+
+Radar's architecture defines the mobile user as the broadcaster for the whole of its process, be it offline and online phases of the fingerprint method as described in (xXXXX).Despite the choice, P. Bahl et al,(cite radar) comment on their choice consequences, imagining that in a real situation, the since the number of mobile users is vastly bigger than that of base stations, the inversion of the roles would be beneficial in order to decrease the complexity and the workload. Passing the broadcast role to the base stations while having the mobile users are listeners would make it so that for a certain floor the complexity would be constant, i.e. equal to the number of stations, instead of being unstable as the number of current mobile users. This change of architecture would allow for much more stable system, while requiring that the mobile users to perform an extra action in the form of a scan, a scan for capture of base station's broadcasts. Radar was design in a way that the collected information by the base stations were forwarded to a central computer, where they were processed in order to obtain a user's location. As such any existing user on the network was capable of being tracked but the information wasn't made available to the mobile user. Device deployment in this system isn't an issue as Wi-Fi is massive deployed technology present in most existant devices. At the time of development this system made use of computer with wi-fi available, as such no system specidic devices were required at least for the online phase. Due to the choice of fingerprint as location method, aditional measures conserning data collection are always required.
+
+cricket- 	Beacons send RF broadcast periodically and at the same time a US signal
+			Mobilehost start counting time when they receive a US signal and stop when the RF arrives
+			Mobile Host computes the distance
+
+Add to cricket info on this paper - http://www.cse.wustl.edu/~lu/cse521s/Papers/cricket.pdf
+
+
+The cricket system is completely different from the other three systems already presented, in terms of architecture. Cricket's Architecture is completely decentralized and the beacons and mobile users have the same roles as the proposed generic architecture of this work. Cricket's beacons broadcast periodically RF and US signals while the mobile user is in charge of listening for both of the signals. Data collection happens entirely on the mobile user's side, as explained on section( xXXXx), in the form of \ac{TDoA}. Location computation is obtained directly on the cricket's listeners and this information is made available through this device's API. As such the mobile user's device can inquire the listeners about its position. This design , when compared to the the presented generic framework, reduces a communication step, the one between device and location server. This situation allows the user to keep its privacy intact as no one else has access to the its location. On the other hand, location computational work is passed onto the mobile user, which can make an impact on the performance depending on the algorithms complexity. Another issue is the fact the code deployed on mobile devices can cause issues if needed to be update, creating a versioning problem that can be solved by having the required code in a centralized station. Cricket's system was created without providing a map based location although as stated by the authors (Add cite to cricket paper), with the deployment of a map server, as in the presented generic framework, by sending the calculated location to this map provider, a location system could be easily provided to the user.
+
+
+zonith- 	beacon on the Wall/Ceiling collects periodically all nearby ble devices
+			beacons forward information to central, making it available
+			Workers and temporary entities (visiting people) need to be manually inserted into the database
+
+Zonith's architecture was created solely for tracking of people and as such presents inverted roles for beacons and mobile users when compared to the generic framework. The system requires users that need to be tracked to manually insert their device's information, be it system specific or the user's personal device, onto the system. The carried devices should be always in advertising mode so that the existant listeners can capture their signal. This design although similar to the imposed on the mobile devices of the badge or bat systems, since its an always active feature should have a much bigger impact on the energy requirements. The beacon listeners forward their gathered data onto the central station, where all the data of the users to be tracked are kept and the system's functionalities are computed. 
+
+They have a indoor location feature for rescuing teams, showing a map with the route to the user in danger's location. 
+
+
+ibeacon- 	ibeacon sends proximity packets
+			mobile devices capture them and forward to server
+			server processes back to the mobile user
+
+The ibeacon hospital system's architecture is very similar to the presented generic framework. There are beacons which broadcast signals containing location specific information, which are to be capture by nearby mobile user's devices. Upon receiving the beacon's information, they forward it into the central server which analyzes the location and gives back to the user information based on it. The maps required for displaying the user's location were deployed on the user's application upon installation of the service. Upon receiving the user's location information back from the server, it is displayed on the local accessible maps. By removing the existance of a map provider server, the scalability of the system is drastically reduced. While it is acceptable for closed environment's service, i.e. app designed for a specific location such as an hospital, when making an indoor location system that is to be used in multiple places, a general exterior map provider server makes it so that a smartphone application doesn't require to have locally all the required maps.
 
 
 BLE IMPROVEMENTS.
