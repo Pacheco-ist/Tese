@@ -1,0 +1,32 @@
+\section{System Requirements}
+\label{sec:requirements}
+
+When proposing a generic architecture it is fundamental to define the requirements of any system that intents to implement it. These requirements can be of many different types, from energetic , to functional or scalability, all of which will now be mentioned. Any system capable of complying all the presented minimum requirements can make use of the architecture while being sure that their system will be able to properly function as part of a bigger system and with any other compliant systems. 
+
+Functional requirements:
+
+The whole architecture revolves around having a smartphone as the central point for communication. As such the existant functional requirements are all based either on technological requirements  or compatibility with any smartphone. As such the architecture requires the utilization of smartphone with network capability in order to be able establish communication between smartphone and location or maps server.
+
+Another functional requirement is the one concerning the communication between the beacon component, which provides the smartphone with information about its surroundings and take on many shapes and forms depending on the chosen technology, and the smartphone. This requirement limits the number of usable technologies around the existent sensors. The analysis on the communication compatibility with smartphones has been conducted on section \ref{sec:critical}.
+
+
+Energetic Requirements:
+
+It isn't easy to define energetic requirements of an architecture as it is a very volutile parameter. One of the concerns when making use of smartphone as the central node of communication is the fact that the whole system is constraint on the energetic availablability of the smartphone. As such it is of major importance to make sure that the energetic impact of the system when it is working is the smallest possible.
+
+The energetic impact of the system depends on multiple factors such as: Energetic capacity of the smartphone, whose values have been increasing over the years in order to support the higher energetic cost of applications; Cost of the communication between beacon and smartphone, which depends on the size of the messages and the technology; Cost of the communication between smartphone and servers, which depend on the network access available; Cost of the technology's scanning procedure; Cost of map download; Cost of displaying the maps on the smartphone application and finally the overall cost of the application utilization.
+
+When analyzing the costs of each of the previously mentioned factors, the most variable factors are the costs relative to the technology scanning and communication between beacon and smartphone. These cost are dependent on the technology's specific sensor. The remaining communication cost are relatively stable and are independant on the chosen technlogy. These costs depend mostly on the size of the transmitted messages, which for the ones between smartphone and location server depends on the number of surrounding beacons and for the ones between smartphone and maps server depends on the size of the maps on the maps server.  
+
+The mentioned energetic costs are specific to the cost of one complete operation. The overall cost of the system is dependant on the frequency of the operation. Other than the energy, the used frequency has an impact on the update rate at which the user is capable of knowing its positions. In order to reduce the energetic impact there are algorithms which allow for suspending the process whenever the mobile user is static, i.e. the last location request remains actual without need for update.
+
+Other that the technology specific costs, the energetic costs are highly dependant on frequency of the 
+
+NEEDS ACTUAL VALUE???? SAY MAYBE LESS THAN THAT OF THE GPS
+
+https://www.researchgate.net/profile/Frank_Fitzek/publication/224248235_Survey_on_Energy_Consumption_Entities_on_the_Smartphone_Platform/links/0deec51a4e140ccd35000000.pdf - energy consumption
+
+Deployability requirements
+
+
+
