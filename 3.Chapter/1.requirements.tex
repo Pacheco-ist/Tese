@@ -20,13 +20,35 @@ When analyzing the costs of each of the previously mentioned factors, the most v
 
 The mentioned energetic costs are specific to the cost of one complete operation. The overall cost of the system is dependant on the frequency of the operation. Other than the energy, the used frequency has an impact on the update rate at which the user is capable of knowing its positions. In order to reduce the energetic impact there are algorithms which allow for suspending the process whenever the mobile user is static, i.e. the last location request remains actual without need for update.
 
-Other that the technology specific costs, the energetic costs are highly dependant on frequency of the 
+Other that the technology specific costs, the energetic costs are highly dependant on the update frequency... 
 
 NEEDS ACTUAL VALUE???? SAY MAYBE LESS THAN THAT OF THE GPS
 
 https://www.researchgate.net/profile/Frank_Fitzek/publication/224248235_Survey_on_Energy_Consumption_Entities_on_the_Smartphone_Platform/links/0deec51a4e140ccd35000000.pdf - energy consumption
 
-Deployability requirements
+
+Interoperability requirements
+
+The concept behind the proposal of a generic architecture framework is that besides multiple system, which use different technologies, being capable of functioning under the same architecture and interface, they also can work together seamlessly. 
+
+In order to support interoperability, i.e. an indoor building attempting to implement multiple different systems, the smartphone needs to be able to identify the type of input data that it's sending to the location server, while the location server needs to be ready to obtain the user's location through the type of data received.
+
+For the data processing, any two technologies that are compatible with smartphones can be used on the same system. In this system, the user needs to be able of obtain a position through any of the chosen technologies, be it passively or actively, in case that the data collection requires user interaction, and the collected data needs to be tagged and sent to the location server. The system's location server needs to be able to distinguish the two tags and its required to be capable of computing the mobile user's location through either of data types. Since the response from the location server is a location, it is independent of the data provided, which means that the rest of the system doesn't require any changes in the presence of multiple sources of location.
+
+
+Environmental requisites:
+
+The environmental requisites are solely dependant on the system's technlogy. When studying the possibility of deploying a large scale system which has to be capable of functioning in many different indoor environments, the beacon technology needs to be able to be deployed in those same places.
+
+Another requirement is that the environment where the system is to be deployed needs to have network access, since it is a critical functional requirement. This caution is present in underground environments or other places where mobile network can't be relied upon, which puts the extra requirement of providing another source of network access, such as Wi-Fi.
+
+
+
+
+
+
+
+
 
 
 
