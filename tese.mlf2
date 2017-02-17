@@ -1,12 +1,12 @@
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.1}{\ignorespaces \ac {BLE} Architecture}}{\reset@font\mlffont 7}{figure.caption.19}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.2}{\ignorespaces Gatt-based profile hierarchy}}{\reset@font\mlffont 10}{figure.caption.29}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.3}{\ignorespaces Advertising event}}{\reset@font\mlffont 10}{figure.caption.32}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.4}{\ignorespaces Connection Event}}{\reset@font\mlffont 11}{figure.caption.33}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.5}{\ignorespaces LE Topology}}{\reset@font\mlffont 11}{figure.caption.34}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.6}{\ignorespaces Landmarc deployment showing sub-regions (Ref \cite {landmarc}) }}{\reset@font\mlffont 15}{figure.caption.38}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.7}{\ignorespaces Comparison of temporal stability (Ref \cite {fila}) }}{\reset@font\mlffont 16}{figure.caption.41}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.8}{\ignorespaces Uisense's system setup (Ref \cite {ubisense}) }}{\reset@font\mlffont 17}{figure.caption.47}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.9}{\ignorespaces Fingerprint example with data collection positions (Ref \cite {fingerprint}) }}{\reset@font\mlffont 21}{figure.caption.51}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.10}{\ignorespaces Active badge's tags (Ref \cite {badgefig}) }}{\reset@font\mlffont 23}{figure.caption.53}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.11}{\ignorespaces Active bat (Ref \cite {batfig}) }}{\reset@font\mlffont 23}{figure.caption.55}}
-{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.12}{\ignorespaces Cricket's \ac {TDoA} representation}}{\reset@font\mlffont 26}{figure.caption.57}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.1}{\ignorespaces Landmarc deployment showing sub-regions (Ref \cite {landmarc}) }}{\reset@font\mlffont 9}{figure.caption.20}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.2}{\ignorespaces Comparison of temporal stability (Ref \cite {fila}) }}{\reset@font\mlffont 10}{figure.caption.24}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.3}{\ignorespaces Uisense's system setup (Ref \cite {ubisense}) }}{\reset@font\mlffont 12}{figure.caption.30}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.4}{\ignorespaces Fingerprint example with data collection positions (Ref \cite {fingerprint}) }}{\reset@font\mlffont 16}{figure.caption.34}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.5}{\ignorespaces Active badge's tags (Ref \cite {badgefig}) }}{\reset@font\mlffont 17}{figure.caption.36}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.6}{\ignorespaces Active bat (Ref \cite {batfig}) }}{\reset@font\mlffont 18}{figure.caption.38}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.7}{\ignorespaces Cricket's \ac {TDoA} representation}}{\reset@font\mlffont 21}{figure.caption.40}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.8}{\ignorespaces \ac {BLE} Architecture}}{\reset@font\mlffont 23}{figure.caption.42}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.9}{\ignorespaces Gatt-based profile hierarchy}}{\reset@font\mlffont 26}{figure.caption.51}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.10}{\ignorespaces Advertising event}}{\reset@font\mlffont 26}{figure.caption.54}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.11}{\ignorespaces Connection Event}}{\reset@font\mlffont 27}{figure.caption.55}}
+{\reset@font\mlffont\mtc@string\contentsline{figure}{\noexpand \leavevmode \numberline {2.12}{\ignorespaces LE Topology}}{\reset@font\mlffont 27}{figure.caption.56}}

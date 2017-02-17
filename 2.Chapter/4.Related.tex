@@ -7,7 +7,7 @@
 \label{subsec:badge}
 
 
-In 1992 the Active Badge system \cite{badge} was presented as an infrared solution capable of provided room-based position tracking. The system has been designed to make use of "active badge" beacons, which can be visualized in figure \ref{fig:badge} in the form of ID cards, a tag equiped with an \ac{IR} LED that emitted a unique code for approximately a tenth of a second every 15 seconds.
+In 1992 the Active Badge system \cite{badge} was presented as an infrared solution capable of provided room-based position tracking. The system has been designed to make use of "active badge" beacons, which can be visualised in figure \ref{fig:badge} in the form of ID cards, a tag eqquiped with an \ac{IR} LED that emitted a unique code for approximately a tenth of a second every 15 seconds.
 
 \begin{figure}[H]
 	\centering
@@ -16,11 +16,11 @@ In 1992 the Active Badge system \cite{badge} was presented as an infrared soluti
 	\label{fig:badge}
 \end{figure}
 
-The decision to utilize \ac{IR} was due to how small and cheap the emitters and detectors are, being capable of operating within a 6 meter range and because \ac{IR} signals arent't capable of traveling through walls. The signal frequency has two major effects of the system, the first being its impact on the energy consuption of the tags, with such a small frequency allowing for long periods of work on a single battery and the second being its impact on user detection. For the used signal duration and frequency there is a chance of 1/150 for two signals to collide, which leads to a good probability that for a small number of beacons, all will be detected. One downside of such a small frequency signal is that the location of a badge can only be known, at best, to a 15 second granularity.
+The decision to utilise \ac{IR} was due to how small and cheap the emitters and detectors are, being capable of operating within a 6 meter range and because \ac{IR} signals aren’t capable of traveling through walls. The signal frequency has two major effects of the system, the first being its impact on the energy consumption of the tags, with such a small frequency allowing for long periods of work on a single battery and the second being its impact on user detection. For the used signal duration and frequency there is a chance of 1/150 for two signals to collide, which leads to a good probability that for a small number of beacons, all will be detected. One downside of such a small frequency signal is that the location of a badge can only be known, at best, to a 15 second granularity.
 
-The position of a user is obtained through the implementation of a network of sensors which act as receivers, listening to badge transmitions, and then forward the obtained information to the master station. The master station is responsible for polling all the sensors on the network, store sighted badges into a database with its associated time, position and ID, data processing and data display. The accuracy of the system is room-based by making use of \ac{CoO} and the properties of \ac{IR}. A beacon in each room would make it so that each beacon is capable of detecting any badges in its room.
+The position of a user is obtained through the implementation of a network of sensors which act as receivers, listening to badge transmissions, and then forward the obtained information to the master station. The master station is responsible for polling all the sensors on the network, store sighted badges into a database with its associated time, position and ID, data processing and data display. The accuracy of the system is room-based by making use of \ac{CoO} and the properties of \ac{IR}. A beacon in each room would make it so that each beacon is capable of detecting any badges in its room.
 
-One of the issues that surfaced with this system were privacy issues. Due to the system's nature, the position of each badge is known in a centralized station, with the only available option for people who don't wish to be tracked, to disable their tag. Another privacy issue was the security of the system's data with needed improvements to control access to data \cite{badge1}.
+One of the issues that surfaced with this system were privacy issues. Due to the system's nature, the position of each badge is known in a centralised station, with the only available option for people who don't wish to be tracked, to disable their tag. Another privacy issue was the security of the system's data with needed improvements to control access to data \cite{badge1}.
 
 
 
@@ -41,29 +41,29 @@ In 2001 the Active bat system \cite{bat}was introduced, a system capable of trac
 	\label{fig:bat}
 \end{figure}
 
- A bat, which can be seen in figure \ref{fig:bat}, consisted of a radio transciever, controlling logic and a ultrasonic transducer, with each having an associated globally unique ID. A Base station periodically transmits a radio message containing a single unique ID, making it so that the ID's associated bat emits a short pulse of \ac{US}. At the same time, the ultrasound receivers present in the rooms covered by the base station that emitted the radio signal are reset through the wired network. From this point on, the receivers monitor for the expected \ac{US} signal while recording the time spent waiting in order to obtain the signal's \ac{ToA}. With a known speed of sound in air, which can be estimated from the ambient temperature, the \ac{ToA} can be converted into bat-receiver distance.
+ A bat, which can be seen in figure \ref{fig:bat}, consisted of a radio transceiver, controlling logic and a ultrasonic transducer, with each having an associated globally unique ID. A Base station periodically transmits a radio message containing a single unique ID, making it so that the ID's associated bat emits a short pulse of \ac{US}. At the same time, the ultrasound receivers present in the rooms covered by the base station that emitted the radio signal are reset through the wired network. From this point on, the receivers monitor for the expected \ac{US} signal while recording the time spent waiting in order to obtain the signal's \ac{ToA}. With a known speed of sound in air, which can be estimated from the ambient temperature, the \ac{ToA} can be converted into bat-receiver distance.
 
- The mobile target's position can be obtained through multilateration, in the three dimensional space, if three or more non-collinear receivers' distances are known. This method's accuracy is highly dependent on the distance measurement's accuracy. Distance measurement is affected by signal reflections on objects present in the environment, a problem that was correct by the use of a statistical outlier rejection algorithm. One other issue is the reverberations of the initial signal, which are required to die out before initiating another distance measurement in order to ensure that the incoming \ac{US} signals are from the correct bat. As such the measurement process is devided into timeslots, with each being usable to locate one and only one bat.
+ The mobile target's position can be obtained through multilateration, in the three dimensional space, if three or more non-collinear receivers' distances are known. This method's accuracy is highly dependent on the distance measurement's accuracy. Distance measurement is affected by signal reflections on objects present in the environment, a problem that was correct by the use of a statistical outlier rejection algorithm. One other issue is the reverberations of the initial signal, which are required to die out before initiating another distance measurement in order to ensure that the incoming \ac{US} signals are from the correct bat. As such the measurement process is divided into time-slots, with each being usable to locate one and only one bat.
 
- The existant system is capable of being improved in order to also provide the target's orientation. The first option is to place several bats at known points of the rigid object and finding their positions on the 3D space. In cases where multiple bat deployment isn't feasible, if the rigid object is opaque to ultrasound, one single tag might be enough to estime the objects orientation since any cast signal leaves a shadow on the object \cite{bat1}.
+ The existent system is capable of being improved in order to also provide the target's orientation. The first option is to place several bats at known points of the rigid object and finding their positions on the 3D space. In cases where multiple bat deployment isn't feasible, if the rigid object is opaque to ultrasound, one single tag might be enough to estimate the objects orientation since any cast signal leaves a shadow on the object \cite{bat1}.
 
-The latest version of the bat included a sensitive motion detector that allowed it to tell the base stations wheter it was moving or stationary. Since the base station doesn't require to repeatedly determine the location of a stationary object, the system places these bats into a low-power sleep state which is only removed once the bat stats moving. This implementation allowed for extra power savings while freing up location-update opportunities for other bats \cite{bat2}.
+The latest version of the bat included a sensitive motion detector that allowed it to tell the base stations whether it was moving or stationary. Since the base station doesn't require to repeatedly determine the location of a stationary object, the system places these bats into a low-power sleep state which is only removed once the bat stats moving. This implementation allowed for extra power savings while freeing up location-update opportunities for other bats \cite{bat2}.
 
-This system's architecture, much like the Active badge's presented in \ref{subsec:badge}, is tightly controlled and centralized. As such it also incurs into the same provacy issues from the active badge system. Another problem created by this system's technique is the requirement of large numbers of receivers across the ceiling and their placements which require sentitve alignments.
+This system's architecture, much like the Active badge's presented in \ref{subsec:badge}, is tightly controlled and centralised. As such it also incurs into the same privacy issues from the active badge system. Another problem created by this system's technique is the requirement of large numbers of receivers across the ceiling and their placements which require sensitive alignments.
 
 
 \subsec{Radar}
 \label{subsec:radar}
 
-In 2001 the RADAR system was introduced as the first Wi-Fi signal-strength based indoor positioning system \cite{radar}. The system is \ac{RF}-based and its capable of locating and tracking users inside buildings. Radar makes use of signal-strength information obtained through a fingerprint method, presented in subsection \ref{subsubsec:rssi}, to trinagulate the user's coordinates. The system's functions in two phases: the data collection phase, where the data is gathered in order to later construct and validate models for signal propagation, which are to be used in the real-time phase to infer user's location. In the offline phase, the type of data collected is the signal strength utilizing the methodology already described for the fingerprint method.
+In 2001 the RADAR system was introduced as the first Wi-Fi signal-strength based indoor positioning system \cite{radar}. The system is \ac{RF}-based and its capable of locating and tracking users inside buildings. Radar makes use of signal-strength information obtained through a fingerprint method, presented in subsection \ref{subsubsec:rssi}, to triangulate the user's coordinates. The system's functions in two phases: the data collection phase, where the data is gathered in order to later construct and validate models for signal propagation, which are to be used in the real-time phase to infer user's location. In the offline phase, the type of data collected is the signal strength utilising the methodology already described for the fingerprint method.
 
-Radar's experiments showed \ac{RSSI}'s problems relative to value fluctuation dependent on the user's orientation. This happens due to the existance or not of \ac{LOS} between antenna and base station depending on the orientation, since the user's body may form an obstruction. As such the user's direction was also recorded in the offline phase.
+Radar's experiments showed \ac{RSSI}'s problems relative to value fluctuation dependent on the user's orientation. This happens due to the existence or not of \ac{LOS} between antenna and base station depending on the orientation, since the user's body may form an obstruction. As such the user's direction was also recorded in the offline phase.
 
 Data processing involve computing the mean, standard deviation and median of \ac{RSSI} for each of the used base stations (three in total) and each combination of x,y and direction. In addition, a building layout information was created which included room and base station's coordinates and the number of walls that obstructed the direct line between the base stations and each of the positions where data was collected. With all this information an accurate signal propagation modal was built.
 
-The basic approach used to obtain a user's location was triangulation, which given a set of \ac{RSSI} measurements at each base station, the user's location is guessed to be the one that best matches the observed data. In addition to this basic strategy, two others approaches were analyzed: empirical and signal propagation methods. 
+The basic approach used to obtain a user's location was triangulation, which given a set of \ac{RSSI} measurements at each base station, the user's location is guessed to be the one that best matches the observed data. In addition to this basic strategy, two others approaches were analysed: empirical and signal propagation methods. 
 
-For the first method many variations on the data was studied such as: The number of best matching values used ( K-nearest neighbours (KNN)), with results showing that the benefits of averaging between multiple neighbours isn't very relevant even for small values of k as in this case it doesn't mean that there aren't k physical distinct points. Other factors were studied such as the impact of the number of samples collected or the number of data points and the impact of the user orientation, with the most relevant being the latter, having shown the relevance of collecting data for multiple directions. In general the empirical method was capable of estimating the user's location with high accuracy, obtaining a mediam error distance between 2 and 3 meters, and with its main drawback being the required effort for building the data set for each physical area of interest. Another issue is the requirement to remake the data collection phase whenever a base stations is moved or there are heavy changes in the environment.
+For the first method many variations on the data was studied such as: The number of best matching values used ( K-nearest neighbours (KNN)), with results showing that the benefits of averaging between multiple neighbours isn't very relevant even for small values of k as in this case it doesn't mean that there aren't k physical distinct points. Other factors were studied such as the impact of the number of samples collected or the number of data points and the impact of the user orientation, with the most relevant being the latter, having shown the relevance of collecting data for multiple directions. In general the empirical method was capable of estimating the user's location with high accuracy, obtaining a median error distance between 2 and 3 meters, and with its main drawback being the required effort for building the data set for each physical area of interest. Another issue is the requirement to remake the data collection phase whenever a base stations is moved or there are heavy changes in the environment.
 
 The signal propagation model comes as an alternative to the empirical method for constructing the fingerprint. This method makes use of a propagation model for the signal to generate a set of theoretically-computed signal strength data, similar to the one physically collected. The performance of this method is correlated to the how well the used model is capable of correctly describe the signal. The system's chosen propagation model was Wall Attenuation Factor model (WAF) which takes into consideration obstacles between transmitter and receiver. This model provides a more reasonable way of obtaining data, since it doesn't require detailed and costly measurements. When compared to the empirical method, it was capable of achieving a mean error distance of 4.5 meters, that although it isn't as accurate it can be considerate as a solution when analysing its benefits.
 
@@ -71,11 +71,11 @@ The signal propagation model comes as an alternative to the empirical method for
 \subsec{Cricket}
 \label{subsec:cricket}
 
-The Cricket system \cite{cricket}was developed by the Massachusetts Institute of Technology (MIT) in 2005 and managed to tackle some of the problems existant in the previously mentioned systems. The system makes use of nodes, small hardware platforms, consisting of a RF transceiver, a microcontroller and hardware capable of generating and receiving ultrasonic signals. There are two types of nodes: beacons, which are fixed reference points attached to the ceiling or walls of the building, and receivers, called listeners, which are attached to the objects that need to be tracked. Each beacon periodically transmits a \ac{RF} signal message containing beacon specific information, such as the beacon's unique ID, its coordinates and the physical space associated to the beacon. Whenever a \ac{RF} signal is transmitted, an ultrasonic pulse, which doesn't contain any data, is also emitted thus enabling listeners to measure their distance to the beacons by using the time difference of arrival times of the RF and ultrasonic signals. Each listener utilizes the RF signal's beacon information alongside the obtain distances to beacons to compute their space position and orientation. 
+The Cricket system \cite{cricket}was developed by the Massachusetts Institute of Technology (MIT) in 2005 and managed to tackle some of the problems existent in the previously mentioned systems. The system makes use of nodes, small hardware platforms, consisting of a RF transceiver, a micro-controller and hardware capable of generating and receiving ultrasonic signals. There are two types of nodes: beacons, which are fixed reference points attached to the ceiling or walls of the building, and receivers, called listeners, which are attached to the objects that need to be tracked. Each beacon periodically transmits a \ac{RF} signal message containing beacon specific information, such as the beacon's unique ID, its coordinates and the physical space associated to the beacon. Whenever a \ac{RF} signal is transmitted, an ultrasonic pulse, which doesn't contain any data, is also emitted thus enabling listeners to measure their distance to the beacons by using the time difference of arrival times of the RF and ultrasonic signals. Each listener utilises the RF signal's beacon information alongside the obtain distances to beacons to compute their space position and orientation. 
 
-When a beacon is deployed it doesn't know its exact position, only a human-readable string which describes its location. In order to compute the recently deployed beacon's position a listener is attached to a roaming device in order to collect distances from the beacons to itself. These distances are used to compute inter-beacon distances, which, when in high enough number, are capable of uniquely define how beacons are located in respect to eachother. With this information it is then possible to obtain the beacon's coordinates.
+When a beacon is deployed it doesn't know its exact position, only a human-readable string which describes its location. In order to compute the recently deployed beacon's position a listener is attached to a roaming device in order to collect distances from the beacons to itself. These distances are used to compute inter-beacon distances, which, when in high enough number, are capable of uniquely define how beacons are located in respect to each other. With this information it is then possible to obtain the beacon's coordinates.
 
-The utilized method for computing distances doesn't require listeners to actively transmit messages which permits cricket to perform well independently to the number of users. This active-beacon passive-listener architecture makes it so that the position of the user isn't tracket by the system thus solving the user privacy that were present in the remaining projects.
+The utilised method for computing distances doesn't require listeners to actively transmit messages which permits cricket to perform well independently to the number of users. This active-beacon passive-listener architecture makes it so that the position of the user isn't tracked by the system thus solving the user privacy that were present in the remaining projects.
 
 \begin{figure}[H]
 	\centering
@@ -84,7 +84,7 @@ The utilized method for computing distances doesn't require listeners to activel
 	\label{fig:cricket-tdoa}
 \end{figure}
 
-Distance measurement is computed through \ac{TDoA} using both \ac{RF} and \ac{US} signals and it can be visualized in figure \ref{fig:cricket-tdoa}. Since the velocity of the \ac{RF} signal is much higher than that of the \ac{US} signal and when considering a direction, the \ac{US} signal lags behind when compared to the other. As such, whenever a listener receives a \ac{RF} signal, it measures the time is takes until the \ac{US} signal arrives, denominated \textit{\delta T}. With knowledge of the speeds of sound and light, the distance between beacon and listener can be obtained from:
+Distance measurement is computed through \ac{TDoA} using both \ac{RF} and \ac{US} signals and it can be visualised in figure \ref{fig:cricket-tdoa}. Since the velocity of the \ac{RF} signal is much higher than that of the \ac{US} signal and when considering a direction, the \ac{US} signal lags behind when compared to the other. As such, whenever a listener receives a \ac{RF} signal, it measures the time is takes until the \ac{US} signal arrives, denominated \textit{\delta T}. With knowledge of the speeds of sound and light, the distance between beacon and listener can be obtained from:
 
 $$ \delta t = \frac{d}{v_{US}} - \frac{d}{v_{RF}}  $$
 
@@ -98,48 +98,48 @@ In terms of performance, Cricket was capable of a distance measurement accuracy 
 \label{subsec:ble}
 	
 
-When looking at what's possible to achieve using the BLE technology there is the example of Apple's creation iBeacon \cite{ibeacon} which was presented in 2013 with the porpuse of implementing proximity sensing systems. The device is capable of playing on the broadcaster role and as such its objective is to send nearby compatible receivers certain information. Some examples of application are to track customers or trigger location-based actions on devices such as push notifications or checking in on social media, with pratical cases such as the usage of iBeacons by McDonalds to offer special offers to their customers in their fast-food stores. An indoor location system utilizing this technology was presented by Jingjing Yang et al \cite{ibeacon1}, where these devices were used to indicate a patient of his whereabouts through the proximity sensing proprieties and this information was later transfered over to a server in order to give clients a variaty of different services, from pacient counting, to nearby department's information and offer indoor guidance to the nearest available bed. 
+When looking at what's possible to achieve using the BLE technology there is the example of Apple's creation iBeacon \cite{ibeacon} which was presented in 2013 with the purpose of implementing proximity sensing systems. The device is capable of playing on the broadcaster role and as such its objective is to send nearby compatible receivers certain information. Some examples of application are to track customers or trigger location-based actions on devices such as push notifications or checking in on social media, with practical cases such as the usage of iBeacons by McDonalds to offer special offers to their customers in their fast-food stores. An indoor location system utilising this technology was presented by Jingjing Yang et al \cite{ibeacon1}, where these devices were used to indicate a patient of his whereabouts through the proximity sensing proprieties and this information was later transferred over to a server in order to give clients a variety of different services, from patient counting, to nearby department's information and offer indoor guidance to the nearest available bed. 
 
-When utilizing BLE for indoor location the usual metric used to calculate distances is the RSSI. This metric withint the context of bluetooth brings to surface several issues such as the fact that RSSI as a metric is very accurate only when the target is within a meter of the beacon, since the value decreases as the inverse of the square of the distance to the beacon . As such when developing solutions for indoor location that require system with high accuracy capable of tracking moving objects, the usage of RSSI can't be utilized without further work. Faragher et al \cite{bleacc} tackled one of the techniques used to improve BLE system's accuracy, fingerprinting, by verifying the effects caused by the device deployment density within the required location. This experiment also puts into evidence one of the downsides of the bluetooth technology being that its scalability is low, besides requiring higher density in order to increase accuracy, due to their low range any need to increase coverage leads to increased costs.
-
-
-Zonith \cite{zonith} introduced a bluetooth based location system with the objective of tracking the position of workers in dangerous environments. Any device registered in the zonith implemented network would be continuously tracked and accounted for in each of the system's functionalities such as, sounding an alarm whenever a lone worker doesn't move or responde within a time interval (Lone worker protection) or providing a quick an precise location of any worker that has requested for help. This system's installation requires planing of the best locations to place the beacons and number required of beacons in order to be able to provide enough courage and make sure the system provides the required quality.
+When utilising BLE for indoor location the usual metric used to calculate distances is the RSSI. This metric within the context of bluetooth brings to surface several issues such as the fact that RSSI as a metric is very accurate only when the target is within a meter of the beacon, since the value decreases as the inverse of the square of the distance to the beacon . As such when developing solutions for indoor location that require system with high accuracy capable of tracking moving objects, the usage of RSSI can't be utilised without further work. Faragher et al \cite{bleacc} tackled one of the techniques used to improve BLE system's accuracy, fingerprinting, by verifying the effects caused by the device deployment density within the required location. This experiment also puts into evidence one of the downsides of the bluetooth technology being that its scalability is low, besides requiring higher density in order to increase accuracy, due to their low range any need to increase coverage leads to increased costs.
 
 
+Zonith \cite{zonith} introduced a bluetooth based location system with the objective of tracking the position of workers in dangerous environments. Any device registered in the zonith implemented network would be continuously tracked and accounted for in each of the system's functionalities such as, sounding an alarm whenever a lone worker doesn't move or respond within a time interval (Lone worker protection) or providing a quick an precise location of any worker that has requested for help. This system's installation requires planing of the best locations to place the beacons and number required of beacons in order to be able to provide enough courage and make sure the system provides the required quality.
 
 
 
 
 
 
-BLE IMPROVEMENTS.
-
-2005 - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.99.3970&rep=rep1&type=pdf for RSSI problems
-
-2015 - http://icact.org/upload/2015/0525/20150525_finalpaper.pdf - Analysis of density's effect on accuracy
-
-2016 - https://www.researchgate.net/profile/Jeewoong_Park/publication/305043911_Using_BIM_Geometric_Properties_for_BLE-based_Indoor_Location_Tracking/links/577fc71908ae9485a439ae6b.pdf -  BIM to help BLE
-
-http://www.cl.cam.ac.uk/~rmf25/papers/BLE.pdf -  An Analysis of the Accuracy of Bluetooth Low Energy for Indoor Positioning Applications;
------RSSI fluctuation, fingerprinting and multipath mitigation
-
-http://airccj.org/CSCP/vol5/csit54714.pdf - Accelerometer para filtrar resultados
 
 
+%BLE IMPROVEMENTS.
+
+%2005 - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.99.3970&rep=rep1&type=pdf for RSSI problems
+
+%2015 - http://icact.org/upload/2015/0525/20150525_finalpaper.pdf - Analysis of density's effect on accuracy
+
+%2016 - https://www.researchgate.net/profile/Jeewoong_Park/publication/305043911_Using_BIM_Geometric_Properties_for_BLE-based_Indoor_Location_Tracking/links/577fc71908ae9485a439ae6b.pdf -  BIM to help BLE
+
+%http://www.cl.cam.ac.uk/~rmf25/papers/BLE.pdf -  An Analysis of the Accuracy of Bluetooth Low Energy for Indoor Positioning Applications;
+%-----RSSI fluctuation, fingerprinting and multipath mitigation
+
+%http://airccj.org/CSCP/vol5/csit54714.pdf - Accelerometer para filtrar resultados
 
 
-Dietrich et al. [2004] deploy a moving Bluetooth-enabled mobile device as
-the transmitter, along with a dedicated correlation IC and microcontroller as two receivers.
-The position is calculated by TDOA measurement to achieve meter-level accuracy.
-Chen et al. [2010] present an inquiry-based locating approach using Bluetooth
-RSS measurements.
 
-Dietrich, G. Fischer, and F. Winkler. 2004. Bluetooth indoor localization system. In Proceedings of the 1st
-Workshop on Positioning, Navigation and Communication (WPNC’04).
 
-Chen, L. Pei, and J. Liu. 2010. Using inquiry-based Bluetooth RSSI probability distributions for indoor
-positioning. Journal of Global Positioning Systems 9, 2 (2010), 122–130.
+%Dietrich et al. [2004] deploy a moving Bluetooth-enabled mobile device as
+%the transmitter, along with a dedicated correlation IC and microcontroller as two receivers.
+%The position is calculated by TDOA measurement to achieve meter-level accuracy.
+%Chen et al. [2010] present an inquiry-based locating approach using Bluetooth
+%RSS measurements.
 
-http://s3.amazonaws.com/academia.edu.documents/30924074/JoGPS_v9n2p122-130.pdf?AWSAccessKeyId=AKIAJ56TQJRTWSMTNPEA&Expires=1481741330&Signature=D01oLIJ%2Bt44TBP7kOE2CnIN563I%3D&response-content-disposition=inline%3B%20filename%3DUsing_Inquiry-based_Bluetooth_RSSI_Proba.pdf
+%Dietrich, G. Fischer, and F. Winkler. 2004. Bluetooth indoor localization system. In Proceedings of the 1st
+%Workshop on Positioning, Navigation and Communication (WPNC’04).
+
+%Chen, L. Pei, and J. Liu. 2010. Using inquiry-based Bluetooth RSSI probability distributions for indoor
+%positioning. Journal of Global Positioning Systems 9, 2 (2010), 122–130.
+
+%http://s3.amazonaws.com/academia.edu.documents/30924074/JoGPS_v9n2p122-130.pdf?AWSAccessKeyId=AKIAJ56TQJRTWSMTNPEA&Expires=1481741330&Signature=D01oLIJ%2Bt44TBP7kOE2CnIN563I%3D&response-content-disposition=inline%3B%20filename%3DUsing_Inquiry-based_Bluetooth_RSSI_Proba.pdf
 
 

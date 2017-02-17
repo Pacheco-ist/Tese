@@ -9,10 +9,15 @@
 \label{cap:implement}
 
 
-The implementation presented in this paper was created by utilizing the generic indoor location system presented in section \ref{sec:architecture} and applying it with bluetooth low energy. The system's architecture is presented in figure ~\ref{fig:implementation} and is divided three parts: the bluetooth low energy device, in section ~\ref{subsec:beacon} a description of the used technologies and the changes made are present;the server, whose funcionalities and stored information are described in section ~\ref{subsec:server}; and the smartphone application, whose process is described in section ~\ref{subsec:app} alongside figures that show the functional prototype. For each of these parts an explanation will be given, containing a description of each of its components specific to the presented system alongside the requirements for each to work.
+The implementation presented in this paper was created by utilising the generic indoor location system presented in section \ref{cap:architecture} and applying it with bluetooth low energy. The system's architecture is presented in figure ~\ref{fig:implementation} and is divided three parts: the bluetooth low energy device, in section ~\ref{sec:beacon} a description of the used technologies and the changes made are present; the server, whose functionalities and stored information are described in section ~\ref{sec:server}; and the smartphone application, whose process is described in section ~\ref{sec:app} alongside figures that show the functional prototype. For each of these parts an explanation will be given, containing a description of each of its components specific to the presented system alongside the requirements for each to work.
 
 
-This chapter gives an overview of the state of the art of Indoor positining solutions. The \acf{BLE}'s architecture and functionality is analyzed in section \ref{sec:ble}, while section \ref{sec:indoortech} overviews the other existing technologies. The most common techniques utilized for position computation along side examples which make use of them are explained in section \ref{sec:techniques}. Finnally on section \ref{sec:related} analyzes the most projects that had the most relevance in the field and the existing work related to \ac{BLE}.
+\begin{figure}
+	\centering
+		\includegraphics[width=1\linewidth]{4.Chapter/implementation.png}
+	\caption[\ac{BLE} system Architecture]{\ac{BLE} system Architecture}
+	\label{fig:implementation}
+\end{figure}
 
 \input{4.Chapter/1.BLE.tex}
 \input{4.Chapter/2.server.tex}
