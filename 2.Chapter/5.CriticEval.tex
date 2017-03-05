@@ -59,14 +59,3 @@ In this section one wants to review all the technologies that have been presente
 	In order to look at \ac{US} system's capabilities in today's world one can look into the work of Viacheslav F. et al \cite{us_ex}. Their work presented a location system based on the capability of producing \ac{US} signals using a smartphone's microphone. The presented system made use of a smartphone as the central piece, which interacted with the system through a mobile application. Although it was a promising approach on indoor location, it falls under the limitations of the technology. Since \ac{US} signals require an existing \ac{LOS} between sensor and smartphone, the infrastructural requirements are higher than many of the remaining technologies.
 
 \end{description}
-
-
-
-Zonith's architecture was created solely for tracking of people and as such presents inverted roles for beacons and mobile users when compared to the generic framework. The system requires users that need to be tracked to manually insert their device's information, be it system specific or the user's personal device, onto the system. The carried devices should be always in advertising mode so that the existent listeners can capture their signal. This design although similar to the imposed on the mobile devices of the badge or bat systems, since its an always active feature should have a much bigger impact on the energy requirements. The beacon listeners forward their gathered data onto the central station, where all the data of the users to be tracked are kept and the system's functionalities are computed. 
-
-They have a indoor location feature for rescuing teams, showing a map with the route to the user in danger's location. 
-
-
-
-
-The ibeacon hospital system's architecture is very similar to the presented generic framework. There are beacons which broadcast signals containing location specific information, which are to be capture by nearby mobile user's devices. Upon receiving the beacon's information, they forward it into the central server which analyses the location and gives back to the user information based on it. The maps required for displaying the user's location were deployed on the user's application upon installation of the service. Upon receiving the user's location information back from the server, it is displayed on the local accessible maps. By removing the existence of a map provider server, the scalability of the system is drastically reduced. While it is acceptable for closed environment's service, i.e. app designed for a specific location such as an hospital, when making an indoor location system that is to be used in multiple places, a general exterior map provider server makes it so that a smartphone application doesn't require to have locally all the required maps.
