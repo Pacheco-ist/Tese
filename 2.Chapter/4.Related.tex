@@ -97,7 +97,6 @@ In terms of performance, Cricket was capable of a distance measurement accuracy 
 \subsec{BLE systems}
 \label{subsec:ble}
 	
-
 When looking at what's possible to achieve using the BLE technology there is the example of Apple's creation iBeacon \cite{ibeacon} which was presented in 2013 with the purpose of implementing proximity sensing systems. The device is capable of playing on the broadcaster role and as such its objective is to send nearby compatible receivers certain information. Some examples of application are to track customers or trigger location-based actions on devices such as push notifications or checking in on social media, with practical cases such as the usage of iBeacons by McDonalds to offer special offers to their customers in their fast-food stores. An indoor location system utilising this technology was presented by Jingjing Yang et al \cite{ibeacon1}, where these devices were used to indicate a patient of his whereabouts through the proximity sensing proprieties and this information was later transferred over to a server in order to give clients a variety of different services, from patient counting, to nearby department's information and offer indoor guidance to the nearest available bed. 
 
 When utilising BLE for indoor location the usual metric used to calculate distances is the RSSI. This metric within the context of bluetooth brings to surface several issues such as the fact that RSSI as a metric is very accurate only when the target is within a meter of the beacon, since the value decreases as the inverse of the square of the distance to the beacon . As such when developing solutions for indoor location that require system with high accuracy capable of tracking moving objects, the usage of RSSI can't be utilised without further work. Faragher et al \cite{bleacc} tackled one of the techniques used to improve BLE system's accuracy, fingerprinting, by verifying the effects caused by the device deployment density within the required location. This experiment also puts into evidence one of the downsides of the bluetooth technology being that its scalability is low, besides requiring higher density in order to increase accuracy, due to their low range any need to increase coverage leads to increased costs.
@@ -105,41 +104,10 @@ When utilising BLE for indoor location the usual metric used to calculate distan
 
 Zonith \cite{zonith} introduced a bluetooth based location system with the objective of tracking the position of workers in dangerous environments. Any device registered in the zonith implemented network would be continuously tracked and accounted for in each of the system's functionalities such as, sounding an alarm whenever a lone worker doesn't move or respond within a time interval (Lone worker protection) or providing a quick an precise location of any worker that has requested for help. This system's installation requires planing of the best locations to place the beacons and number required of beacons in order to be able to provide enough courage and make sure the system provides the required quality.
 
+\subsec{Location description systems}
 
+In order to better understand the existent ways of describing locations it's better to look at existent solutions and the methods that they utilise. The most common method of describing location is through latitude and longitude, much like the \ac{GPS} does, with the biggest example that makes use of it being Google maps. Google maps, through its indoor maps platforms \cite{googlemaps} allows integration of indoor maps onto their google maps. Since google maps uses this type of location description, the indoor component of it follows the same routes. An indoor map on the platform is inserted onto its original geographical location and in the case of having multiple floors, it is possible to navigate through them. This indoor component is of relatively small complexity, likely due to google's reduce investement onto indoor location system, leading to a small amount of indoor specific characteristics. 
 
+Another method is to consider the indoor map as the location reference and utilise a cartesian coordinate system, x and y, to represent a location. Meridian, an indoor location system developed by HP \cite{meridian} which presents functionalities such as route making and push notifications through its beacons, makes use of its platform for insertion of the indoor maps. As such there isn't the outdoor component that google indoor maps has but it allows for utilising a (x,y) system relative to the building map. While no overly complex building description is allowed, it is still possible to indicate the position of specific elements such as restrooms or stores.
 
-
-
-
-
-%BLE IMPROVEMENTS.
-
-%2005 - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.99.3970&rep=rep1&type=pdf for RSSI problems
-
-%2015 - http://icact.org/upload/2015/0525/20150525_finalpaper.pdf - Analysis of density's effect on accuracy
-
-%2016 - https://www.researchgate.net/profile/Jeewoong_Park/publication/305043911_Using_BIM_Geometric_Properties_for_BLE-based_Indoor_Location_Tracking/links/577fc71908ae9485a439ae6b.pdf -  BIM to help BLE
-
-%http://www.cl.cam.ac.uk/~rmf25/papers/BLE.pdf -  An Analysis of the Accuracy of Bluetooth Low Energy for Indoor Positioning Applications;
-%-----RSSI fluctuation, fingerprinting and multipath mitigation
-
-%http://airccj.org/CSCP/vol5/csit54714.pdf - Accelerometer para filtrar resultados
-
-
-
-
-%Dietrich et al. [2004] deploy a moving Bluetooth-enabled mobile device as
-%the transmitter, along with a dedicated correlation IC and microcontroller as two receivers.
-%The position is calculated by TDOA measurement to achieve meter-level accuracy.
-%Chen et al. [2010] present an inquiry-based locating approach using Bluetooth
-%RSS measurements.
-
-%Dietrich, G. Fischer, and F. Winkler. 2004. Bluetooth indoor localization system. In Proceedings of the 1st
-%Workshop on Positioning, Navigation and Communication (WPNC’04).
-
-%Chen, L. Pei, and J. Liu. 2010. Using inquiry-based Bluetooth RSSI probability distributions for indoor
-%positioning. Journal of Global Positioning Systems 9, 2 (2010), 122–130.
-
-%http://s3.amazonaws.com/academia.edu.documents/30924074/JoGPS_v9n2p122-130.pdf?AWSAccessKeyId=AKIAJ56TQJRTWSMTNPEA&Expires=1481741330&Signature=D01oLIJ%2Bt44TBP7kOE2CnIN563I%3D&response-content-disposition=inline%3B%20filename%3DUsing_Inquiry-based_Bluetooth_RSSI_Proba.pdf
-
-
+Although Meridian already provides some extra level of detail in comparison with google indoor maps, there is another example that should be mentioned called OpenStreetMaps. Although it started much like google, providing global data, due to its openness, many indoor projects surfaced such as OpenLevelUP \cite{openlevel}. This project makes use of OpenStreetMaps' current indoor tagging scheme \cite{opentagging}, which is intented to describe in the most complete and simple way a building. This makes available the number of floors, the type of elemets (room, wall, corridor, etc) and its connectors, like doors and escalators or elevators, allowing to understand clearly the map that is being analysed.
