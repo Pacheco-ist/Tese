@@ -1,0 +1,46 @@
+\section{Location service} 
+\label{sec:LocService} 
+ 
+ 
+The Smartphone application was developed for Android using the Android Studio IDE. The Application is divided in two primary functional blocks, the location service and maps service, as seen in figure \ref{fig:implementation}. 
+ 
+ 
+The location service is implemented as if it was a Location provider, such as GPS. By implementing the whole process of obtaining a location inside a service, one extra level of abstraction is added to the application. As such, whenever the application is signaled to obtain the user's current location, a request is made to the associated location service and the application only needs to listen for the answer that will eventually arrive. 
+ 
+ 
+ 
+ 
+ 
+ 
+The location service includes the first three steps presented in figure ~\ref{fig:MockProvider}, which will now be described individually. The initial step represents the gathering of information about user's surroundings. Upon receiving a location request, the service initiates a scan for nearby Bluetooth low energy beacon. This scanning puts the smartphone in a listening state for incoming \ac{BLE} advertisement packets. During this scanning period, each time a beacon is found, its name is analysed so that it can be compared with the used name template. Having passed through the first scanning, each beacon is registered for later usage. Once the scanning period is completed, the list of beacons is completed and forwarded for the next step. 
+ 
+ 
+\begin{figure}[H] 
+\centering 
+\includegraphics[width=0.5\linewidth]{4.Chapter/RequestLocation.png} 
+\caption[Application Workflow]{Application Workflow} 
+\label{fig:MockProvider} 
+\end{figure} 
+ 
+ 
+The second step, in a summarised way, consists of communicating with each of the beacons, in order to obtain their location server's address and forwarding the list to it.  
+ 
+ 
+Upon completing the first step, the location service communicates with each beacon individually. For each beacon the service will attempt to respond to the caught advertisement packet, so that a connection can be created. Once the connection is created, the service requests a list of the available services of the paired beacon. 
+Once received, the list of services is searched for, in an attempt to find the system service's universally unique identifier (UUID). If the beacon doesn't have the UUID that the service is looking for, it can assume that the paired \ac{BLE} enabled beacon doesn't belong to the system, leading to the termination of the connection. If on the other hand, the UUID is present, a request for the service's characteristics is made.  
+ 
+ 
+Upon obtaining the requested list, its content is examined with the objective of finding the UUID of the characteristic containing the address of the beacon's associated location server. This search has the objective of confirming that the service existent in this beacon is in fact the one that was implemented for the system, thus excluding the possibility of having a different service which happened to have the same UUID. For any service outside those that are documented in the Bluetooth Special Interest Group (SIG), who have a specific UUID attached to them, the UUID is generated randomly and as such there is a small chance of collision.  
+ 
+ 
+Once the wanted characteristic is found, the service reads its value, i.e. the beacon's associated server address, and stores it in a list. This list will contain the servers of the beacons that were found, and for each address there will be a list corresponding to each beacon's ID and their corresponding received signal strength indicator (RSSI) values. In order to quicken the previously described process, the service could keep in cache the most recent contacted beacons. Upon obtaining a beacon's associated server address, this information could be stored in a cache. Therefore, before initiating any connection, the service can look up if the beacon's data is present on it. Whenever this search succeeds, no further work is necessary. This optimisation would largely reduce the required number of connections. 
+ 
+ 
+When every beacon has been contacted, a voting system is actioned which will decide from the list of servers which one it will send the collected information to. The voting system uses an exponential function in order to attribute a weight to each server.  
+The voting system was implemented with the intention of providing a thin security layer. Since every beacon has an associated weight, one expects that the sum of valid beacon's weight is capable of eliminating that of a nearby attacker. After calculating each server's weighted sum, the one with the highest is chosen. This server is selected as the one responsible for calculating the user's position.  
+ 
+ 
+The third step involves a simple client/server tcp interaction. The service starts by formulating the message that it will later on send to the server. This message includes all pairs of beacon mac address and its associated RSSI value captured by the service on the first step. Once the message is constructed, the service attempts to create a connection with the location server. With the connection established, the message is forwarded to the server and the service is put onto a blocked state where it awaits for an answer. Upon arrival, the received answer is verified, its information processed and the connection is terminated. The information contained inside the received message is then transferred into a container capable of storing a geographic location, which is then passed onto the application. 
+ 
+ 
+ 

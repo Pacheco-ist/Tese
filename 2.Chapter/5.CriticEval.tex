@@ -1,61 +1,113 @@
-\section{Critical evaluation}
-\label{sec:critical}
-
-In this section one wants to review all the technologies that have been presented in this section but this time comment and evaluate them with a modern day's vision. It is of relevance to understand which technologies present concepts that can still be easily usable in the present and whether or not they can be adapted to function with state-of-art Smartphones.
-
-\begin{description}
-\item [\acf{RFID}]  In the current days isn't much of technology for indoor location systems. This is caused by multiple factors such as its incompatibility with smartphone, which by itself is already a critical factor for not being capable of being used in indoor systems other than the ones for research purposes. One recent system using \ac{RFID} was presented by Han Zou et al. \cite{rfid_sys} which makes use RFID tags and sensors, a \ac{RFID} reader and a location server. The general procedure for computing a location is that the tags emitted its ID which is caught by the sensors, the sensors make use of its external power supply to allow the creation of a continuous wireless connection with the reader. Once the reader receives the data he forwards it to the server where the location is obtained. This system introduces one of the issues of RFID which is the high cost of readers. This situation creates a big constraint on the architecture since making the mobile user the central piece of the architecture would require a \ac{RFID} reader per person. As such nowadays \ac{RFID} isn't a technology used for indoor location but instead for people or object tracking, since this approach only requires the person/object to have a unique tag. 
-
-\item[WLAN] is a technology that was made for positioning but since it contains \acf{RSSI} information it is possible to use it with that purpose. One of its strongest points is its availability, as it's hugely wide spread around the world and it doesn't require any extra infrastructure, other than the already existing one, to function. As such nowadays this technology can be useful when attempting to create an indoor location system capable of being utilised by smartphones in any environment. This is only possible since pretty much every single smartphone is equipped with a WLAN antenna.
-
-	WLAN \ac{RSSI}-based indoor location systems can be of two types, trilateration or fingerprint.
-	When imagining a scenario for a system implemented in multiple sites, the fingerprint technique raises questions which can be analysed by looking into the RADAR system. 
-
-	Radar's architecture defines the mobile user as the broadcaster for the whole of its process, be it offline and online phases of the fingerprint method as described in (xXXXX).Despite the choice, P. Bahl et al,(cite radar) comment on their choice consequences, imagining that in a real situation, since the number of mobile users is vastly bigger than that of base stations, the inversion of the roles would be beneficial in order to decrease the complexity and the workload. Passing the broadcast role to the base stations while having the mobile users are listeners would make it so that for a certain floor the complexity would be constant, i.e. equal to the number of stations, instead of being unstable as the number of current mobile users. This change of architecture would allow for much more stable system, while requiring that the mobile users to perform an extra action in the form of a scan, a scan for capture of base station's broadcasts. Radar was design in a way that the collected information by the base stations were forwarded to a central computer, where they were processed in order to obtain a user's location. As such any existing user on the network was capable of being tracked but the information wasn't made available to the mobile user. Device deployment in this system isn't an issue as Wi-Fi is massive deployed technology present in most existent devices. At the time of development this system made use of computer with wi-fi available, as such no system specific devices were required at least for the online phase. Due to the choice of fingerprint as location method, additional measures concerning data collection are always required.
-
-	By analysing RADAR its possible to understand the constraints of the fingerprint technique. As such only the trilateration technology could be of use in a large scale environment. With the idea of keeping the smartphone as the central piece of the  architecture, it would be on him to capture the \ac{RSSI} signals from the nearby access points and forward that same information to their associated servers for the rest of the location procedure.
-
-	Due to the WLAN characteristics and its worldwide availability, it is often used in hybrid indoor location systems. 
-
-\item[\acf{IR}] 	In order to analyse the \ac{IR} technology one can initiate by studying the badge system, which was described in section \ref{subsec:badge}.
-
-	The badge system's architecture is considerably different from the one proposed in this work as the role of the beacon(sensor receivers) and the smartphone (badge devices) are exchanged. This exchange in roles allows to reduce the energy cost on the mobile device since it isn't up to it to communicate with the server and due to the design of the system the energetic balance between scanning and performing a signal broadcast for a tenth of a second each fifteen seconds isn't of relevance. Another aspect of this architecture is the fact that the collected data is sent to the central station, the only place where it will be available, making it only capable of tracking individual users and not providing the users with their location.Since the required building maps are already in the central station there is no need a maps provider. In terms of device distribution, this system makes use of system specific devices, which are already set up and inserted into the system and are distributed to anyone or anything that is to be tracked.
-
-	Due to badge's age, it can't be relied on when making a judgement on the usability of \ac{IR} in the present time. As such it is of relevance to look at recent works dependent on this technology such as the Epsilon project \cite{epsilon}, which makes use of Light-emitting Diode (LED) and light sensors.  
-
-	Epsilon makes use of LEDs and their capacity to both illuminate, the main reason for it's utilised and wide available il multiple indoor environments, and their capacity to communicate. By making use of the LED's ability to instantaneously change between on and off, it is possible to carry digital data in the visible light carrier through Pulse Width Modulation (PWM). In this system each of the used LEDs was self-contain, i.e. it knew its own location, which was insert into the data transmitted to the mobile user. The mobile user would capture the LED information through its light sensor, and consequently decode the received data from each of the available sources in order to make use of a trilateration system to obtain its position.
-
-	Epsilon presents a solution which is easy to use in today's world due to the availability of LED lighting in indoor environments, with the only requirement being the adaption of the existing infrastructure to the required by the system. In order for the system to work, it required the mobile user to carry a device with an incorporated light sensor, which is the case of pretty much any existent smartphone.
-	Epsilon's architecture was created with the intention of having a "plug-and-play" kind of system, made possible through the self-contained LEDs and location calculation made on the smartphone. However in order to be used in a broader environment it could be adaptable to this work's proposed architecture.
-
-	Much like the authors already suggest in their work, instead of the self-contained LEDs, they could use a back-end service for mapping the IDs of each LED to their location, by relying on a network connection. The mentioned service would be the equivalent of the location server component on the proposed architecture, with the additional possibility of passing the location computation (which was implemented to occur on the smartphone) to the location service. Since no map component is mention on the work, there wouldn't be any conflict with the addition of the map server, which would rely on the already needed network connection.
-
-\item[\acf{UWB}]  Is a technology that isn't very practical for indoor location in today's world. The main reason for it is the incompatibility with the existent modern day smartphones.
-	Existent \ac{UWB} system are dependent on system specific hardware which invalidates the possibility of having a wide scale indoor location systems.
-
-	When analysing recent \ac{UWB} system, the most common ones are tracking only systems. These systems are found useful in construction environments, where tracking crane's position is of relevance \cite{uwb-ex1}. This position tracking is accomplished by setting up a network of \ac{UWB} sensors on the construction site and placing \ac{UWB} tags on the crane or parts of the crane, if the whole position and pose of the vehicle are of relevant, that is to be tracked. If additional objects were to be tracked, it would only be required to add tags to the object in question.
-
-	In terms of viability for indoor location, there are commercially available solutions such as the one presented by Decawave \cite{uwb-ex2}. Decawave presents a \ac{UWB} transceiver in the form of a hardware module. The proposed module makes use of \acf{RToF} to obtain distance between itself and another module of the same kind. This transceiver can be used to implement indoor location systems based on \ac{UWB} although it won't be compatible with existent smartphones.
-
-\item [Optical] As described in section \ref{subsec:others}, optical systems are systems which are dependent on camera as means to obtain input for indoor location. These kind of system are easily usable in today's world due to all the technological improvements of cameras and their integration into every single existent smartphone. Although it was described in section \ref{sec:indoortech} as a single technology, nowadays smartphone cameras as used as input receivers in \ac{IR} systems. One example is the already analysed system, Epsilon, where the camera is used as a mean to capture \ac{IR} signals from LEDs. 
-
-	Other variants of camera-based systems make use of depth cameras with the intention of build dense 3D maps of indoor environments \cite{camera_ex}, which can be useful in robot navigation. Due to their high cost and incompatibility with modern day smartphone, these variants can't be used for large scale indoor location systems.
-
-\item[FM] This radio technology can be seen as an alternative to WLAN, due to their similarities. Much like WLAN, \ac{FM} receivers are present in pretty much every single existent smartphone which removes the smartphone component from the list of possible constraints. FM as a technology for indoor location can be used, but often times is discarded in favour of other possibilities. When compared to WLAN, while it has some advantages such as lesser power consumption on smartphones, its bigger range and power, or even the fact that its less prone to interference from human presence or objects due to its bigger frequency band, when compared to WLAN already existent infrastructure and availability, all the positive sides become less meaningful. 
-
-	Sungro Yoon et al. \cite{fm_ex}, proposed an \ac{FM} system capable of providing indoor location through a fingerprint method and the signals commercial \ac{FM} radio stations. Since it's a fingerprint-based system, the whole process and its pro's and con's have already been heavily commented on. The big addition with this system is the utilisation of a publicly available signal ,i.e. existent commercial radio stations, which means that there is no need for extra infrastructure. 
-	When analysing the possibility of adapting this system onto the proposed generic architecture, i.e. attempting to make use of this work in order to idealise a higher scale system, one can say that it is feasible. Since the smartphone functions as a receiver, with the radio towers, which include their information ,location and power, functioning as the "beacons", the missing components would be making the fingerprint database on a centralised server, with the same happening to the maps provider.
-
-\item[Zigbee] Is a technology that has been gaining traction due to its low power characteristics, which are very popular in \ac{IoT}, but as of today hasn't been incorporated into smartphones. As such a smartphone reliant system using zigbee isn't possible only by itself, it would required the addition of a zigbee dongle to allow smartphones to communicate with other zigbee devices. With such restraints, zigbee hasn't been very developed in the indoor location field.
-	
-	The few existing zigbee system make use of the fingerprint method for data collection and location computation, such as the example provided in section \ref{subsec:others}. With the development of IoT it is possible that one day smartphone will be capable of communicating with other zigbee devices, allow for further development on indoor location.
-
-\item[\ac{US}] 	In order to analyse \ac{US} it is of relevance to review two systems, the bat and cricket systems presented on section \ref{sec:related}, that make use of this technology and analyse how they could be adapted to todays reality and the generic smartphone centric architecture for an wide scale indoor location system.
-
-	The bat system's architecture is very similar to the one deployed by the badge system, with the big difference being that its location is tracked upon request instead of being periodic. In energetic terms, it is also similar with the increased cost of having an additional operation, listening for central station's messages. Bat deployment is also manually done, with each person or object required to carry a system specific device. Each user's position is tracked and not provided to the user, while being made available through the maps provider extant within the central station.
-
-	The cricket system is completely different from the other remaining systems already presented, in terms of architecture. Cricket's Architecture is completely decentralised and the beacons and mobile users have the same roles as the proposed generic architecture of this work. Cricket's beacons broadcast periodically RF and US signals while the mobile user is in charge of listening for both of the signals. Data collection happens entirely on the mobile user's side, as explained on section \ref{sec:related}, in the form of \ac{TDoA}. Location computation is obtained directly on the cricket's listeners and this information is made available through this device's API. As such the mobile user's device can inquire the listeners about its position. This design , when compared to the the presented generic framework, reduces a communication step, the one between device and location server. This situation allows the user to keep its privacy intact as no one else has access to the its location. On the other hand, location computational work is passed onto the mobile user, which can make an impact on the performance depending on the algorithms complexity. Another issue is the fact the code deployed on mobile devices can cause issues if needed to be update, creating a versioning problem that can be solved by having the required code in a centralised station. Cricket's system was created without providing a map based location although as stated by the authors (Add cite to cricket paper), with the deployment of a map server, as in the presented generic framework, by sending the calculated location to this map provider, a location system could be easily provided to the user.
-
-	In order to look at \ac{US} system's capabilities in today's world one can look into the work of Viacheslav F. et al \cite{us_ex}. Their work presented a location system based on the capability of producing \ac{US} signals using a smartphone's microphone. The presented system made use of a smartphone as the central piece, which interacted with the system through a mobile application. Although it was a promising approach on indoor location, it falls under the limitations of the technology. Since \ac{US} signals require an existing \ac{LOS} between sensor and smartphone, the infrastructural requirements are higher than many of the remaining technologies.
-
-\end{description}
+\section{Critical evaluation} 
+\label{sec:critical} 
+ 
+ 
+ 
+ 
+In this section we want to review all the technologies that have been presented in this section but this time comment and evaluate them with a modern day's vision. It is of relevance to understand which technologies present concepts that can still be easily usable in the present and whether or not they can be adapted to function with state-of-art smartphones. There are four core concepts that will be analysed: The level of difficulty in deploying the system; the accessibility of the system towards users, mainly focused on the compatibility with modern smartphones; the scalability of the systems; and finally the privacy of the systems. 
+ 
+ 
+\subsection{Deployment of beacons and scalability} 
+\label{subsec:dep} 
+ 
+ 
+When deploying a system, there are factors that determine how troublesome it is. One factor is the cost of the beacons. Costly beacons can be an obstacle when the number of beacons required to be deployed increases. This number depends on the range and the precision demanded. 
+A system's scalability depends on the possibility of increasing the infrastructure and covered area, as well as being capable of handling an increase in the number of users.  
+Due to the high number of various technologies and correspondent systems, each one will be analysed separately. 
+ 
+ 
+\begin{description} 
+\item [\acf{RFID}]  The analysis of this technology can be achieved through one of its systems. A recent one was presented by Han Zou et al. \cite{rfid_sys} which makes use of RFID tags and sensors, a \ac{RFID} reader and a location server. The general procedure for calculating a location is:  
+\begin{itemize} 
+\item The tags emit their ID, which is caught by the sensors; 
+\item The sensors make use of its external power supply to allow the creation of a continuous wireless connection with the reader. It's through this connection that any captured tag information is sent; 
+\item the reader receives the data and forwards it to the server where the location is obtained. 
+\end{itemize} 
+This system introduces one of the issues of RFID which is the high cost of readers. 
+In this type of architecture, where the objective is for tracking, the deployment of beacons is equivalent to deploying sensors and readers on the areas that are to be covered. As such, increasing the covered area ends up being a costly operation. Nevertheless, since tags are cheap and a user is required to carry just one, user scalability isn't an issue. 
+ 
+ 
+When envisioning a \ac{RFID} system centralised on the users, the roles associated to the tags and sensors plus readers are exchanged. As such, in this scenario, the user scalability would be costly. This occurs since each user would be required to carry a reader. With the reference points being provided by \ac{RFID} tags, the covered area expansion becomes a cheap operation. 
+ 
+ 
+\item[Commodity wireless technologies] In order to study these technologies, the radar system will be used. 
+ 
+ 
+Radar's architecture defines the mobile user as the broadcaster for the whole of its process, be it offline and online phases of the fingerprint method as described in section\ref{sec:related}. Radar's deployment is dependant on a grid of access points and devices for each user. Nowadays both dependencies are often unnecessary since all mobile devices can use Wi-Fi and many indoor environments are already equipped with Wi-Fi access. Due to its wide availability, these system's deployment costs low when compared to other technologies.  
+Despite the architecture, P. Bahl et al\cite{radar1} comment on its consequences, imagining that in a real situation, since the number of mobile users is vastly bigger than that of base stations, the inversion of the roles would be beneficial in order to decrease the complexity and the workload. 
+Passing the broadcast role to the base stations while having the mobile users function as listeners, would make it so that for a certain floor the complexity would be constant, i.e. equal to the number of stations, instead of being unstable like the number of mobile users. This changes would increase the scalability in terms of users for this system. 
+ 
+ 
+Wi-Fi systems often calculate a users location through either trilateration or fingerprint. In the case of fingerprint, the one used by Radar, the complications associated to the technique can reduce scalability. When compared to other techniques, this one has additional maintenance concerns, since it's not about changing a beacon or its location but about updating the areas fingerprint. When an update is required, the whole process must be redone, leading to high costs that are associated to the coverage of the system. 
+  
+ 
+ 
+\item[\acf{IR}] An example of a recent system based on this technology is the Epsilon project\cite{epsilon}, which makes use of Light-emitting Diode (LED) and light sensors.   
+ 
+ 
+Epsilon makes use of LEDs and their capacity to both illuminate and communicate. Through the LED's ability to instantaneously change between on and off state, it is possible to carry digital data in the visible light carrier through Pulse Width Modulation (PWM). In this system each of the used LEDs was self-contain, i.e. it knew its own location, which was insert into the data transmitted to the mobile user. The mobile user would capture the LED information through its light sensor, and consequently decode the received data from each of the available sources in order to make use of trilateration to obtain its position. 
+ 
+ 
+Epsilon presents a solution which is easy to use in today's world due to the availability of LED lighting in indoor environments. Much like the systems that profit from Wi-Fi, this one is capable of profiting from the existing infrastructure for its deployment. The associated cost would then be associated to the adaptation of infrastructure to the one required by the system. For the mobile users, with the required sensors being available in most smartphones, the deployment isn't a problem. 
+ 
+ 
+Epsilon's architecture was created with the intention of having a "plug-and-play" kind of system, made possible through the self-contained LEDs and location calculation made on the smartphone. These characteristics have an impact on the system's scalability. 
+When presenting the system, the authors suggest a way to tackle this issue. Through the use of a back-end service for mapping the IDs of each LED to their location and by transferring the location calculation algorithm to it. This addition to the current architecture would boost the system's scalability since whenever an update or modification to the system's algorithm is required, interaction with every single device is required. 
+ 
+ 
+ 
+ 
+\item[\acf{UWB}] This technology isn't practical for personal indoor location in today's world. The main reason is dependency on system specific hardware which invalidates the possibility of having a wide scale indoor location systems. 
+ 
+ 
+When analysing recent \ac{UWB} system, the most common ones are tracking only systems. These systems are found useful in construction environments, where tracking crane's position is of relevance \cite{uwb-ex1}. This position tracking is accomplished by setting up a network of \ac{UWB} sensors on the construction site and placing \ac{UWB} tags on the crane or parts of it, if the whole position and pose of the vehicle are of relevance, that is to be tracked. While the addition of new target implies only the deployment of new tags, The sensors high cost are the limiting factor on the technology's deployability and scalability.  
+ 
+ 
+Although the difficulty, Decawave \cite{uwb-ex2} attempted to introduce an indoor location solution. Decawave presents a \ac{UWB} transceiver in the form of a hardware module. The deployed beacons would be the traditional LED lights, with the addition of an \ac{UWB} transceiver, allowing them to communicate with the mobile user's device. Since this device would still be system-specific, the system's deployability and scalability are still reduced. 
+ 
+ 
+\item [Optical] As described in section \ref{subsec:others}, optical systems are systems which are dependent on camera, as means to obtain input for indoor location. One example is the already analysed system, Epsilon, where the camera is used as a mean to capture \ac{IR} signals from LEDs.  
+ 
+ 
+Other variants of camera-based systems make use of depth cameras with the intention of build dense 3D maps of indoor environments \cite{camera_ex}, which can be useful in robot navigation. Due to their high cost and incompatibility with modern day smartphone, these variants can't be used for large scale indoor location systems. 
+ 
+ 
+\item[FM]  FM as a technology for indoor location can be used, but often it's discarded in favor of other possibilities. One example of a FM system was presented by Sungro Yoon et al. \cite{fm_ex}. The proposed system was capable of providing indoor location through a fingerprint method and the signals from commercial \ac{FM} radio stations. The utilisation of a publicly available signal ,i.e. existent commercial radio stations, removes the requirement for extra infrastructure. Since user's device compatibility isn't an issue, the deployment of this technology is non-existent. Nevertheless, since it makes use of the fingerprint technique, additional costs are taken into consideration, much like the case of Radar. Other than the limitation from fingerprinting, there are no more scalability concerns, since the required infrastructure is constant. 
+ 
+ 
+ 
+ 
+\item[\ac{US}] Although one could analyse the technology through the cricket or the active bat system, a more recent example will be used. 
+Viacheslav F. et al \cite{us_ex} present a location system based on the capability of producing \ac{US} signals using a smartphone's microphone. The presented system made use of a smartphone as the central piece, which interacted with the system through a mobile application. Although it was a promising approach on indoor location, it falls under the limitations of the technology. Since \ac{US} signals require an existing \ac{LOS} between sensor and smartphone, the infrastructural requirements are higher than many of the remaining technologies. In order to deploy the system, a grid of microphones needs to be set up in each room, which due to the low range, requires a great number of them. This condition greatly affects the scalability of the system, as well as the fact that an increase in the number of users, may cause issues related to line of sight. 
+\end{description} 
+ 
+ 
+ 
+ 
+\subsection{Availability on users devices} 
+\label{subsec:availability} 
+ 
+ 
+Creating a system that makes use of a publicly available device is only possible through smartphones. As such, this concept is entirely dependant on the smartphone's capability with interact with a technology. This capability is determined by the available sensors on the device. 
+Taking the iPhone 6 as an example, one can list its sensors\cite{iphone}: Wi-Fi antenna, making commodity wireless technologies systems possible; 4.2 Bluetooth antenna, allows Bluetooth and its most recent version, Bluetooth low energy, to make use of smartphones; FM antenna, for FM radio systems; Camera and light sensor, allow for optical, as well as infrared systems; microphone, for sound-based systems; and barometer, three-axis gyroscope and accelerometer, that can be used in systems that employ dead reckoning or that used them as support sensors in hybrid systems. Apple systems have one extra possibility, in the shape of iBeacon communication capacity, a technology used by the system presented in section \ref{sec:related}. 
+ 
+ 
+From the list of technologies that are available for indoor location systems, the ones that aren't made available to users through smartphones are: RFID, since these type of indoor systems make use of \ac{RFID} readers, which aren't available on smartphones; Ultra-wide band (UWB), which makes use of antennas that are not present in current devices. ZigBee systems aren't compatible with smartphones for the same reason as UWB, missing antenna. 
+ 
+ 
+ 
+ 
+\subsection{Security} 
+\label{subsec:sec} 
+ 
+ 
+When users are presented with a location system, one of their concerns is their privacy. Privacy is described as whether or not someone other than the user, at the time of a request, has access to the obtained location. In order to analyse the different levels of privacy, one can look at the architectures of the cricket system and the active bat system, both already presented in section \ref{sec:related}. Active bat's system is tightly controlled and centralised, i.e. the position calculation and visualisation happen on the central station of the system. Although this system was capable of tracking users, instead of providing them with their location, it introduced concerns such as the user's willingness of not being tracking and the location's data security. While the first concern's solution was to disable the tag, the other required the improvement of the control access to the central station. 
+ 
+ 
+On the other side of the spectrum, cricket presented a decentralised architecture. One on hand, the beacons were capable of finding their location through the others present in its vicinity, and on the other hand, the system's device was capable of providing the user with its location, without the need of an external entity. Since the device is capable of obtaining it's own position, there is no need to pass the collected information to someone else, guaranteeing the user's privacy.  
+ 
+ 
+In order to obtain a more recent view on privacy, one can review the Epsilon system, which was presented in subsection \ref{subsec:dep}. Although its system is capable of working as-is, where the location is obtained on the smartphone and the privacy of the user is achieved, in a bigger scale deployment it would face scalability issues. When presenting the system, the authors suggest a way to tackle this issue. Through the use of a back-end service for mapping the IDs of each LED to their location and by transferring the location calculation algorithm to it. This modification would create the requirement of a network connection, while also removing the user's privacy.  
+ 
+ 
+From this example, and many other systems/services in our lives, scalability is gained in exchange for user privacy, an exchange often accepted. 

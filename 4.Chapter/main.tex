@@ -9,18 +9,20 @@
 \label{cap:implement}
 
 
-The implementation presented in this paper was created by utilising the generic indoor location system presented in section \ref{cap:architecture} and applying it with bluetooth low energy. The system's architecture is presented in figure ~\ref{fig:implementation} and is divided three parts: the bluetooth low energy device, in section ~\ref{sec:beacon} a description of the used technologies and the changes made are present; the server, whose functionalities and stored information are described in section ~\ref{sec:server}; and the smartphone application, whose process is described in section ~\ref{sec:app} alongside figures that show the functional prototype. For each of these parts an explanation will be given, containing a description of each of its components specific to the presented system alongside the requirements for each to work.
+In this chapter, a detailed explanation of the implemented system will be provided. Figure \ref{fig:implementation} provides an expanded view of the already presented figure \ref{fig:solution}. In order to implement the system, several decisions were made. Starting with the beacon, the chosen technology was \ac{BLE}, leading to the usage of \ac{BLE}-enabled beacons. This decision is fundamental for defining the software that is to be use for smartphone-beacon communication, in this case being the \ac{BLE} stack. For the map server, the Google maps service was   
+used, and as such the map service component of the smartphone was implemented through the Google maps API. The algorithm implemented on the location server was a Cell of Origin (CoO), which was described on section \ref{sec:techniques}, that made use of beacon information stored onto a database, for calculating positions. This database is represented by the beacon manager component of the location server. 
 
-
-\begin{figure}
+\begin{figure}[H]
 	\centering
-		\includegraphics[width=1\linewidth]{4.Chapter/implementation.png}
-	\caption[\ac{BLE} system Architecture]{\ac{BLE} system Architecture}
+		\includegraphics[width=1\linewidth]{4.Chapter/detailedArch.pdf}
+	\caption[Detailed system Architecture]{Detailed system Architecture}
 	\label{fig:implementation}
 \end{figure}
 
-\input{4.Chapter/1.BLE.tex}
-\input{4.Chapter/2.server.tex}
-\input{4.Chapter/3.application.tex}
+\input{4.Chapter/1.Algorithm.tex}
+\input{4.Chapter/2.BLE.tex}
+\input{4.Chapter/3.LocationService.tex}
+\input{4.Chapter/4.server.tex}
+\input{4.Chapter/5.application.tex}
 
 \cleardoublepage

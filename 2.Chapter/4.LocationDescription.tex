@@ -1,0 +1,14 @@
+\section{Location description formats} 
+\label{sec:description} 
+ 
+ 
+In order to better understand the existent various ways of describing locations it's better to look at existing solutions and the methods they employ. The most common method of describing location is through latitude and longitude, much like the \ac{GPS} does, with the biggest example that makes use of it being Google maps. Google maps, through its indoor maps platforms \cite{googlemaps} allows integration of indoor maps onto their google maps. Since Google Maps uses this type of location description, the indoor component of it follows the same routes. An indoor map on the platform is inserted into its original geographical location and in the case of having multiple floors, it is possible to navigate through them. This indoor component is of relatively small complexity, likely due to google's reduce investment onto indoor location system, leading to a small amount of indoor specific characteristics.  
+ 
+ 
+Another method is to consider the indoor map as the location reference and utilise a cartesian coordinate system, x and y, to represent a location. Meridian, an indoor location system developed by HP \cite{meridian}, presents functionalities such as route making and push notifications through its beacons. The indoor map insertion is accomplished through Meridian's online platform. As such there isn't the outdoor component that google indoor maps has but it allows for utilising a (x,y) system relative to the building map. While no complex building description is allowed, it is still possible to indicate the position of specific elements such as restrooms or stores. 
+ 
+ 
+Although Meridian already provides some extra level of detail in comparison with google indoor maps, there is another example that should be mentioned called OpenStreetMap. Although it started much like google, providing global data, due to its openness, many indoor projects surfaced such as OpenLevelUP \cite{openlevel}. This project makes use of OpenStreetMaps' current indoor tagging scheme \cite{opentagging}, which is intended to describe in the most complete and simple way a building. This makes available the number of floors, the type of elements (room, wall, corridor, etc) and its connectors, like doors and escalators or elevators, allowing to understand clearly the map that is being analysed. 
+ 
+ 
+ 

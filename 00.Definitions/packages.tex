@@ -91,6 +91,8 @@
 \usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{multirow}
+\usepackage{array}
+
 
 \usepackage[font=small,labelfont=bf,textfont=normalfont]{caption}
 
@@ -122,6 +124,10 @@
 \usepackage[printonlyused]{acronym}
 \usepackage[titletoc,title,header]{appendix}
 \usepackage[noauto]{chappg}
+%The following line assures that each chapter deals with acronyms idependently.
+%You may also do it manually by calling acresetall anywhere in the documento to reset the acronyms behaviour. 
+\preto\chapter\acresetall
+
 
 % PACKAGE extra_functions VER COMO DEVE SER
 % -----------------

@@ -17,7 +17,7 @@
 %% ------
 \pagestyle{begin}
 \input{0.Inicio/1.cover.tex} 
-\input{0.Inicio/2.citation.tex}
+%\input{0.Inicio/2.citation.tex}
 \input{0.Inicio/3.Acknowledgments.tex}
 \selectlanguage{english}
 \input{0.Inicio/4.Abstract.tex}
@@ -32,7 +32,7 @@
 \acresetall
 %% Remain list of table titles are set manualy
 \input{0.Inicio/7.Acronim.tex}
-\input{0.Inicio/8.symbols.tex}
+%\input{0.Inicio/8.symbols.tex}
 %% Use Main document Language
 \selectlanguage{english}
 %% Define the title of Chapter Table of Contents
@@ -43,6 +43,7 @@
 \input{2.Chapter/main.tex}
 \input{3.Chapter/main.tex}
 \input{4.Chapter/main.tex}
+\input{5.Chapter/main.tex}
 \input{99.Conclusions/conclusions.tex}
 \cleardoublepage
 \phantomsection
@@ -52,16 +53,5 @@
 \bibliography{02.biblio}
 %% Use with Biblatex (.bib file is set in Packages) (Not working)
 %\printbibliography
-
-\cleardoublepage
-
-\begin{appendices}
-	\begin{appendix}
-		\pagenumbering{bychapter}
-		\input{Appendices/appendixA.tex}     
-		\cleardoublepage
-	\end{appendix}
-\end{appendices}
-
 
 \end{document}

@@ -1,9 +1,35 @@
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The Introduction:
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fancychapter{Conclusions and Future Work}
+\fancychapter{Conclusions}
 \label{cap:conclusions}
 
-Conclusions Chapter
+The work developed throughout this dissertation presents a generic framework architecture for indoor location systems. In order to better understand this technological field, a study around the existent work was conducted. Through it, the extensive broadness of available solutions was displayed. From the research conducted, one was capable of noticing the variations of each technology. 
+ 
+ 
+This situation was mostly caused by timings at which revolutionary projects, as the ones seen in chapter \ref{cap:indoor}, were presented to the public, shifting the opinions of which technology would be the most suited to lead the field. As such, no technology has been declared the winner mostly due to the particularities of each and the differences among them. Meanwhile, mobile devices evolved from devices capable of making phone calls to small computers capable of incorporating a wide variety of sensors. This progress granted indoor location system, a universally-used mobile device equipped with sensors compatible with some of the indoor location technologies. Such progress allowed systems to never again be required to develop their own system-specific devices, effectively reducing their associated costs and increasing their overall accessibility. There were still several technologies that took benefit from smartphones, as there wasn't one capable of being largely better than the others. Instead of further dwelling into the field, one decided to take a more generic approach, through the proposed generic framework architecture, we intended to make use of the smartphone capacities to bring together technologies into one common platform. 
+ 
+ 
+The main design concerns of the generic architecture were that it would be scalable and that it would be capable of embracing any existent indoor location technology. Another concern was to have an architecture capable of being adapted to each possible variant of algorithm, the one used for the location calculation, and location representation. 
+
+This capacity was achieved through the offloading of the location computation and the location representation, the component responsible for displaying to the user its location. By isolating each component into their separate server, new considerations were imposed that were not present in previously developed systems. Firstly, with the externalization, a new layer of network communication would be required, which although it's available to all smartphones through Wi-Fi or mobile data, has its own cost that is required to be evaluated. Nevertheless, the trade-off for these extra costs was the possibility of removing the location algorithm dependency from the smartphone, as well as the location description dependency.  
+ 
+ 
+Having the location algorithm outside of the smartphone carries many benefits, such as facilitating the deployment of the system. Since the algorithm is required to know the position of each beacon that is associated to the system, the updating of that collection of information is passed onto a server, instead of requiring an update on each mobile device. Another important aspect is the possibility for users to benefit from systems with different algorithms, since the mobile application isn't tied to a local algorithm, the usage of a different system is simply tied to making a request to a different location server.  
+ 
+ 
+One of the objectives that the generic architecture attempted to achieve was extensibility, to provide a framework where an additional technology, algorithm or location format could be inserted. As discussed in section \ref{sec:requirements}, where the interoperability requirements were presented, a system based on this architecture can make sure that such addition is possible.  
+ 
+ 
+Having defined the generic architecture, GEFILOC, an implementation was achieved through the usage of the Bluetooth low energy technology and the Android operating system. In this system several components of the architecture were implemented: BLE-enable beacons, each programmed with their specific information; a location server, with a database containing the used beacons and a Cell of Origin (CoO) location algorithm for location calculation; and a smartphone application, with a location service responsible for communicating with the beacons and the location server. For the maps server, the Google maps service was used and as such, its API was used to implement the map service component of the application. 
+ 
+ 
+With an implemented system, it was possible to investigate its energy consumption. A batch of tests was conducted with the intention of understanding the costs associated to the system. It was possible to obtain the value for the system's idle consumption, as well as for when all the system's required sensors are active. From these initial tests, it was possible to understand that the Wi-Fi sensors had the highest impact on consumption and it was possible to obtain the smartphone's base costs, an important value for better extracting the system's associated consumption. 
+ 
+ 
+The second group of tests was thought out with the intention of understanding how the system's consumption evolved, through the tuning of two factors: the number of nearby beacons and the operation cycle period. With these results it was possible to visualise the impact of the BLE communication, since changing the number of beacons only has a significant impact on the BLE communication. Through the tuning of the operation cycle period, the energy consumption reduction associated to it was verified to be in order with the expected. 
+ 
+ 
+The last batch of tests was conducted with the intention of evaluating the costs associated with the network communication. This was an important evaluation, since this cost was caused by the architectural choices of isolating components onto servers. As such, tests were created through the tuning of two factor: The number of nearby devices and the operation executed. For each number of nearby devices, one test performed the complete operation as normal, while the other stop immediately after the BLE communication, meaning that no network communication was performed. From the results, it was possible to understand the reduced energy consumption associated to network communication. This analysis supports the decision taken, since the trade-off for isolating the components came at a reduced cost.  
+ 
+ 
+Overall the energetic costs associated to the implemented system support the decisions taken on the architectural design. The most relevant cost was the one associated to the network communication, since it came as a trade-off for the scalability, which achieved acceptable values. 
 
 \cleardoublepage
