@@ -2,7 +2,7 @@
 \label{sec:algos} 
  
  
-The location algorithm is in charge of calculating a position from a set of data that it has received. This data is dependent on the beacons and is formed by a group of pairs of data. Each pair is composed by one of the metrics presented in section \ref{sec:techniques} and the ID of the beacon associated to it. As such the data that is given to the algorithm is a list of pairs that was collected by the location server. 
+The location algorithm is in charge of calculating a position from a set of data that it has received. This data is dependent on the beacons and is formed by a group of pairs of data. Each pair is composed by one of the metrics presented in Section \ref{sec:techniques} and the ID of the beacon associated to it. As such the data that is given to the algorithm is a list of pairs that was collected by the location server. 
  
  
 The deployed algorithm can be of different types, depending on the demanded system's location precision. In this implementation, the chosen algorithm was a Cell of Origion (CoO). This implementation choice allowed for a less complex implementation of the location server, while still being capable of calculating locations. The location algorithm starts by confirming that all the received beacons are present in its database. Having confirmed that, it analyses the list in search for the highest metric value. The user's location is presumed to be equal to the location of the beacon with the highest metric. 

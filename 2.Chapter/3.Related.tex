@@ -6,7 +6,7 @@
 \label{subsec:badge}  
   
   
-In 1992 the Active Badge system \cite{badge} was presented as an infrared solution capable of providing room-based position tracking. The system has been designed to make use of "active badge" beacons, which can be visualised in figure \ref{fig:badge} in the form of ID cards, a tag equipped with an \ac{IR} LED that emitted a unique code for approximately a tenth of a second every 15 seconds.  
+In 1992 the Active Badge system \cite{badge} was presented as an infrared solution capable of providing room-based position tracking. The system has been designed to make use of "active badge" beacons, which can be visualised in Figure \ref{fig:badge} in the form of ID cards, a tag equipped with an \ac{IR} LED that emitted a unique code for approximately a tenth of a second every 15 seconds.  
   
   
 \begin{figure}[H]  
@@ -26,7 +26,7 @@ The position of a user is obtained through the implementation of a network of se
 \label{subsec:bat}  
   
   
-In 2001 the Active bat system \cite{bat}was introduced. It is a system capable of tracking various object, each tagged by attaching small wireless transmitters called bats. The system's architecture is composed of small devices named bats, which are to be carried by the objects or people to be tracked, a network of \acf{US} receiver units and several base stations\cite{bat1}. The receiver network and a deployed bat can be seen on figure \ref{fig:bat};  
+In 2001 the Active bat system \cite{bat}was introduced. It is a system capable of tracking various object, each tagged by attaching small wireless transmitters called bats. The system's architecture is composed of small devices named bats, which are to be carried by the objects or people to be tracked, a network of \acf{US} receiver units and several base stations\cite{bat1}. The receiver network and a deployed bat can be seen on Figure \ref{fig:bat};  
   
   
 \begin{figure}[H]  
@@ -37,7 +37,7 @@ In 2001 the Active bat system \cite{bat}was introduced. It is a system capable o
 \end{figure}  
   
   
-A bat, which can be seen in figure \ref{fig:bat} being carried by the user, consisted of a radio transceiver, controlling logic and a ultrasonic transducer, each having an associated globally unique ID. A Base station periodically transmits a radio message containing a single unique ID, making it so that the ID's associated bat emits a short pulse of ultrasound. From this point on, the receivers monitor for the expected \ac{US} signal while recording the time spent waiting in order to obtain the signal's \ac{ToA}. With a known speed of sound in air, which can be estimated from the ambient temperature, the \ac{ToA} can be converted into bat-receiver distance.  
+A bat, which can be seen in Figure \ref{fig:bat} being carried by the user, consisted of a radio transceiver, controlling logic and a ultrasonic transducer, each having an associated globally unique ID. A Base station periodically transmits a radio message containing a single unique ID, making it so that the ID's associated bat emits a short pulse of ultrasound. From this point on, the receivers monitor for the expected \ac{US} signal while recording the time spent waiting in order to obtain the signal's \ac{ToA}. With a known speed of sound in air, which can be estimated from the ambient temperature, the \ac{ToA} can be converted into bat-receiver distance.  
   
   
 The mobile target's position can be obtained through multilateration in three dimensional space, for as long as three or more non-collinear receivers' distances are known. This method's accuracy is highly dependent on the distance measurement's accuracy. Distance measurement is affected by signal reflections on objects present in the environment, a problem that was correct by the use of a statistical outlier rejection algorithm. One other issue is the reverberations of the initial signal, which are required to die out before initiating another distance measurement in order to ensure that the incoming \ac{US} signals are from the correct bat. As such the measurement process is divided into time-slots, each being capable of locating one and only one bat.  
@@ -50,7 +50,7 @@ The latest version of the bat included a sensitive motion detector that allowed 
 \label{subsec:radar}  
   
   
-In 2001 the RADAR system was introduced as the first Wi-Fi signal-strength based indoor positioning system \cite{radar}. The system is Radio Frequency-based and its capable of locating and tracking users inside buildings. Radar makes use of signal-strength information obtained through a fingerprint method, presented in subsection \ref{subsubsec:rssi}, to triangulate the user's coordinates. The system's functions in two phases: the data collection phase, where the data is gathered in order to later construct and validate models for signal propagation, which are to be used in the real-time phase to infer user's location. In the offline phase, the type of data collected is the signal strength utilising the methodology already described for the fingerprint method.  
+In 2001 the RADAR system was introduced as the first Wi-Fi signal-strength based indoor positioning system \cite{radar}. The system is Radio Frequency-based and its capable of locating and tracking users inside buildings. Radar makes use of signal-strength information obtained through a fingerprint method, presented in Subsection \ref{subsubsec:rssi}, to triangulate the user's coordinates. The system's functions in two phases: the data collection phase, where the data is gathered in order to later construct and validate models for signal propagation, which are to be used in the real-time phase to infer user's location. In the offline phase, the type of data collected is the signal strength utilising the methodology already described for the fingerprint method.  
   
   
 Radar's architecture involved a mobile device, base stations and a central station. The mobile device is solely responsible for sending signals to the base stations. During the process of developing the system, the device was a Windows-based mobile host capable of broadcasting packets. The base stations act as gateways, in a way that it listens for the user's signals and consequently forwards its information to the central station. The central station is in charge of storing the whole fingerprint information in the offline phase and calculating the user's location during the online phase.  
@@ -92,7 +92,7 @@ The utilised method for computing distances doesn't require listeners to activel
 \end{figure}  
   
   
-Distance measurement is computed through \ac{TDoA} using both \ac{RF} and \ac{US} signals and it can be visualised in figure \ref{fig:cricket-tdoa}. Since the velocity of the \ac{RF} signal is much higher than that of the \ac{US} signal, the \ac{US} signal lags behind when compared to the other. As such, whenever a listener receives a \ac{RF} signal, it measures the time it takes until the \ac{US} signal arrives, denominated $\delta{T}$. With knowledge of the speeds of sound and light, the distance between beacon and listener can be obtained from:  
+Distance measurement is computed through \ac{TDoA} using both \ac{RF} and \ac{US} signals and it can be visualised in Figure \ref{fig:cricket-tdoa}. Since the velocity of the \ac{RF} signal is much higher than that of the \ac{US} signal, the \ac{US} signal lags behind when compared to the other. As such, whenever a listener receives a \ac{RF} signal, it measures the time it takes until the \ac{US} signal arrives, denominated $\delta{T}$. With knowledge of the speeds of sound and light, the distance between beacon and listener can be obtained from:  
   
   
 \begin{equation}  

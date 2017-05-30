@@ -2,7 +2,7 @@
 \label{sec:LocService} 
  
  
-The Smartphone application was developed for Android using the Android Studio IDE. The Application is divided in two primary functional blocks, the location service and maps service, as seen in figure \ref{fig:implementation}. 
+The Smartphone application was developed for Android using the Android Studio IDE. The Application is divided in two primary functional blocks, the location service and maps service, as seen in Figure \ref{fig:implementation}. 
  
  
 The location service is implemented as if it was a location provider, such as GPS. By implementing the whole process of obtaining a location inside a service, one extra level of abstraction is added to the application. As such, whenever the application is signaled to obtain the user's current location, a request is made to the associated location service and the application only needs to listen for the answer that will eventually arrive. 
@@ -12,7 +12,7 @@ The location service is implemented as if it was a location provider, such as GP
  
  
  
-The location service includes the first three steps presented in figure ~\ref{fig:MockProvider}, which will now be described individually. The initial step represents the gathering of information about user's surroundings. Upon receiving a location request, the service initiates a scan for nearby Bluetooth low energy beacon. This scanning puts the smartphone in a listening state for incoming \ac{BLE} advertisement packets. During this scanning period, each time a beacon is found, its name is analysed so that it can be compared with the used name template. Having passed through the first scanning, each beacon is registered for later usage. Once the scanning period is completed, the list of beacons is completed and forwarded for the next step. 
+The location service includes the first three steps presented in Figure ~\ref{fig:MockProvider}, which will now be described individually. The initial step represents the gathering of information about user's surroundings. Upon receiving a location request, the service initiates a scan for nearby Bluetooth low energy beacon. This scanning puts the smartphone in a listening state for incoming \ac{BLE} advertisement packets. During this scanning period, each time a beacon is found, its name is analysed so that it can be compared with the used name template. Having passed through the first scanning, each beacon is registered for later usage. Once the scanning period is completed, the list of beacons is completed and forwarded for the next step. 
  
  
 \begin{figure}[H] 
